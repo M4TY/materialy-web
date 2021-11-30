@@ -45,3 +45,8 @@
     color: rgb(180, 180, 180);
     transition: 0.25s;
 }
+
+#content a {
+    text-decoration: none;
+    margin-left: 40px;
+}
