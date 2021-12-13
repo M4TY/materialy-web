@@ -5,58 +5,109 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://api-ssps.cajthaml.eu/file/global/css/reset_ld9mrCCm.css">
-    <link rel="stylesheet" href="style.css">
     <title>Materialy | SSPŠ</title>
+    <link rel="stylesheet" href="reset.css">
+    <script src="app.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            background-color: rgb(29, 29, 29);
+            overflow: hidden;
+        }
+        
+        .left {
+            height: 100%;
+            width: 50%;
+            background-color: rgb(29, 29, 29);
+        }
+        
+        .left p {
+            font-size: 22px;
+            color: white;
+            margin: 10px;
+            text-decoration: underline;
+        }
+        
+        .left a {
+            color: white;
+            font-size: 18px;
+            margin: 10px;
+            margin-left: 20px;
+            transition: 0.25s;
+            text-decoration: none;
+        }
+        
+        .left a:hover {
+            color: gray;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+        
+        .right {
+            height: 100%;
+            width: 50%;
+            background-color: white;
+        }
+        
+        .right iframe {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .list {
+            margin-bottom: 25px;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <ul class="list">
-        <p>Čeština</p>
-        <li><a href="Sub/cj/hodina13.html" target="_blank" rel="noopener noreferrer">Hodina 13</a></li>
-        <li><a href="Sub/cj/hodina14.html" target="_blank" rel="noopener noreferrer">Hodina 14</a></li>
-        <li><a href="Sub/cj/figuryatropy.html" target="_blank" rel="noopener noreferrer">Figury a tropy</a></li>
-        <li><a href="Sub/cj/romantismus.html" target="_blank" rel="noopener noreferrer">Romantismus</a></li>
-        <li><a href="Sub/cj/pribehy.html" target="_blank" rel="noopener noreferrer">Romantismus - díla</a></li>
-    </ul>
+    <div class="left">
+        <ul class="list">
+            <p>Čeština</p>
+            <li><a onclick="loadFrame('Sub/cj/hodina13.html')">Hodina 13</a></li>
+            <li><a onclick="loadFrame('Sub/cj/hodina14.html')">Hodina 14</a></li>
+            <li><a onclick="loadFrame('Sub/cj/figuryatropy.html')">Figury a tropy</a></li>
+            <li><a onclick="loadFrame('Sub/cj/romantismus.html')">Romantismus</a></li>
+            <li><a onclick="loadFrame('Sub/cj/pribehy.html')">Romantismus - díla</a></li>
+        </ul>
 
-    <ul class="list">
-        <p>Počítačové sítě</p>
-        <li><a href="Sub/site/ssh.html" target="_blank" rel="noopener noreferrer">SSH</a></li>
-        <li><a href="Sub/site/dhcp.html" target="_blank" rel="noopener noreferrer">DHCP</a></li>
-        <li><a href="Sub/site/vlan.html" target="_blank" rel="noopener noreferrer">Vlan</a></li>
-        <li><a href="Sub/site/virtualporty.html" target="_blank" rel="noopener noreferrer">Virtual ports</a></li>
-        <li><a href="Sub/site/ospf.html" target="_blank" rel="noopener noreferrer">OSPF</a></li>
-    </ul>
+        <ul class="list">
+            <p>Počítačové sítě</p>
+            <li><a onclick="loadFrame('Sub/site/ssh.html')">SSH</a></li>
+            <li><a onclick="loadFrame('Sub/site/dhcp.html')">DHCP</a></li>
+            <li><a onclick="loadFrame('Sub/site/vlan.html')">VLAN</a></li>
+            <li><a onclick="loadFrame('Sub/site/virtualporty.html')">Virtual Ports</a></li>
+            <li><a onclick="loadFrame('Sub/site/ospf.html')">OSPF</a></li>
+        </ul>
 
-    <ul class="list">
-        <p>Fyzika</p>
-        <li><a href="Sub/fyzika/opakovani_fyzika.html" target="_blank" rel="noopener noreferrer">Opakování na test</a>
-        </li>
-    </ul>
+        <ul class="list">
+            <p>Fyzika</p>
+            <li><a onclick="loadFrame('Sub/fyzika/opakovani_fyzika.html')">Opakování fyzika</a></li>
+            </li>
+        </ul>
 
-    <ul class="list">
-        <p>Občanka</p>
-        <li><a href="Sub/obcanka/obcanka.html" target="_blank" rel="noopener noreferrer">Opakování na test</a></li>
-        <li><a href="Sub/obcanka/psychologie.html" target="_blank" rel="noopener noreferrer">Psychologie</a></li>
-    </ul>
+        <ul class="list">
+            <p>Občanka</p>
+            <li><a onclick="loadFrame('Sub/obcanka/obcanka.html')">Opakování na test</a></li>
+            <li><a onclick="loadFrame('Sub/obcanka/psychologie.html')">Psychologie</a></li>
+        </ul>
 
-    <ul class="list">
-        <p>Matematika</p>
-        <li><a href="Sub/matika/matematikaopakovani.html" target="_blank" rel="noopener noreferrer">Opakování na test
-                trojúhelníky</a></li>
+        <ul class="list">
+            <p>Matematika</p>
+            <li><a onclick="loadFrame('Sub/matika/matematikaopakovani.html')">Opakování trojúhelníky</a></li>
+            <li><a onclick="loadFrame('Sub/matika/obsahyaobvody.html')">Obvody a obashy</a></li>
+            </li>
+        </ul>
 
-        <li><a href="Sub/matika/obsahyaobvody.html" target="_blank" rel="noopener noreferrer">Obvody a obsahy</a></li>
-    </ul>
-
-    <!-- <ul class="list">
-        <p></p>
-        <li><a href="">Hodina 13</a></li>
-    </ul> -->
-
-    <footer class="footer">
-        <p>&copy; <a href="https://github.com/M4TY" target="_blank" rel="noopener noreferrer">Matyáš Himmer</a></p>
-    </footer>
+    </div>
+    <div class="right ">
+        <iframe id="frame" src="" frameborder="0 "></iframe>
+    </div>
 </body>
 
 </html>
