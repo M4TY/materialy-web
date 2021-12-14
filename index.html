@@ -21,7 +21,7 @@
         
         .left {
             height: 100%;
-            width: 50%;
+            width: 25%;
             background-color: rgb(29, 29, 29);
         }
         
@@ -34,7 +34,7 @@
         
         .left a {
             color: white;
-            font-size: 18px;
+            font-size: 20px;
             margin: 10px;
             margin-left: 20px;
             transition: 0.25s;
@@ -49,7 +49,7 @@
         
         .right {
             height: 100%;
-            width: 50%;
+            width: 75%;
             background-color: white;
         }
         
@@ -61,6 +61,15 @@
         .list {
             margin-bottom: 25px;
             margin-left: 10px;
+        }
+        
+        @media only screen and (max-width: 414px) {
+            .left p {
+                font-size: 8px;
+            }
+            .left a {
+                font-size: 7px;
+            }
         }
     </style>
 </head>
