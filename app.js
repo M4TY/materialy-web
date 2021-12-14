@@ -1,4 +1,4 @@
-function onLoad() {
+function loaded() {
     var iframe = document.getElementById("frame");
     var cookies = document.cookie;
     var cookie = cookies.split(";");
