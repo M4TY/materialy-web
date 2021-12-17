@@ -1,4 +1,4 @@
-var version = "0.1.3";
+var verNum = "0.1.3";
 
 function loaded() {
     var iframe = document.querySelector("#frame");
@@ -13,7 +13,7 @@ function loaded() {
     }
 
     var versionP = document.querySelector(".versionP");
-    versionP.innerHTML = version;
+    versionP.innerHTML = verNum;
 }
 
 function loadFrame(subpage) {
