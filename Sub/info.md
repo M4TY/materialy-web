@@ -2,6 +2,10 @@
 
 # Changelog
 
+## 0.1.4
+
+- optimized responsivity
+
 ## 0.1.3
 
 - added changelog
