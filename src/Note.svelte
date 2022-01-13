@@ -1,33 +1,42 @@
 <script>
-    import { onMount } from "svelte";
+  import { onMount } from "svelte";
+  import { page } from "./store.js";
+  import Navbar from "./components/Navbar.svelte";
 
-    import { page } from "./store.js";
+  let pageData = "";
 
-    let pageData = "";
+  function fetchData() {
+    fetch($page)
+      .then((response) => response.text())
+      .then((data) => (pageData = data));
+  }
 
-    function fetchData() {
-        fetch($page)
-            .then((response) => response.text())
-            .then((data) => (pageData = data));
-    }
-
-    onMount(fetchData);
+  onMount(fetchData);
 </script>
 
-<div class="wrapper">
+<div class="wrap">
+  <Navbar />
+  <div class="flexWrapper">
     <iframe srcdoc="<html>{pageData}</html>" title="view" frameborder="0" />
+  </div>
 </div>
 
 <style>
-    .wrapper {
-        width: 100%;
-        height: 100%;
-        overflow-y: hidden;
-        background-color: rgb(255, 255, 255);
-    }
-    .wrapper iframe {
-        width: 100%;
-        height: 100%;
-        background-color: rgb(255, 255, 255);
-    }
+  .flexWrapper {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    background-color: rgb(255, 255, 255);
+  }
+  .flexWrapper iframe {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+  }
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
 </style>
