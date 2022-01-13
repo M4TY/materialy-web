@@ -27,6 +27,6 @@
     .wrapper iframe {
         width: 100%;
         height: 100%;
-        background-color: rgb(76, 82, 101);
+        background-color: rgb(255, 255, 255);
     }
 </style>

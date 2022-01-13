@@ -420,9 +420,9 @@ var app = (function () {
     			attr_dev(iframe, "srcdoc", iframe_srcdoc_value = "<html>" + /*pageData*/ ctx[0] + "</html>");
     			attr_dev(iframe, "title", "view");
     			attr_dev(iframe, "frameborder", "0");
-    			attr_dev(iframe, "class", "svelte-ljsomw");
+    			attr_dev(iframe, "class", "svelte-1534fsv");
     			add_location(iframe, file, 17, 4, 342);
-    			attr_dev(div, "class", "wrapper svelte-ljsomw");
+    			attr_dev(div, "class", "wrapper svelte-1534fsv");
     			add_location(div, file, 16, 0, 315);
     		},
     		l: function claim(nodes) {
