@@ -23,6 +23,7 @@
         width: 100%;
         height: 100%;
         overflow-y: hidden;
+        background-color: rgb(255, 255, 255);
     }
     .wrapper iframe {
         width: 100%;
