@@ -1,3 +1,13 @@
 import { writable } from "svelte/store";
 
-export const page = writable("/content/cj/no.html");
+let storedPage = localStorage.getItem("page");
+
+if (!storedPage) {
+    storedPage = "";
+}
+
+export const page = writable(storedPage);
+
+page.subscribe((value) => {
+    localStorage.setItem("page", value);
+});

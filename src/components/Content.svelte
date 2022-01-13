@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import { compute_slots } from "svelte/internal";
+    import { page } from "../store.js";
     let temp = [];
     let notes = [];
 
@@ -22,7 +23,6 @@
                 let splitted = element.path.split("/");
 
                 let tempSubj = splitted[0];
-                console.log(tempSubj);
                 let tempName = splitted[1].split(".")[0];
                 let tempLink =
                     "https://raw.githubusercontent.com/M4TY/zapisky/main/" +
@@ -37,23 +37,90 @@
             }
         });
     }
+
+    function openLink(link) {
+        page.set(link);
+        window.location = "/note";
+    }
 </script>
 
 <div class="grid-wrapper">
     {#each notes as note}
-        <div class="card">
-            <p>{note.name}</p>
-            <p>{note.subject}</p>
-            <p>{note.link}</p>
-            <br />
+        <div on:click={() => openLink(note.link)} class="card">
+            <div class="nameWrap">
+                <h1>{note.name}</h1>
+            </div>
+            <div class="subjectWrap">
+                <p>{note.subject}</p>
+            </div>
         </div>
     {/each}
 </div>
 
 <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
     .grid-wrapper {
+        width: 70%;
+        height: 100%;
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-row-gap: 80px;
+        grid-column-gap: 40px;
+    }
+
+    .card {
+        font-size: 2vh;
+        font-family: "Roboto", sans-serif;
+        margin-top: 20px;
+        background-color: rgb(61, 62, 81);
+        height: 100%;
         width: 100%;
-        height: 94%;
-        background-color: tomato;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        border-radius: 15px;
+        transition: 0.25s;
+        box-shadow: 1px 1px 10px rgb(76, 82, 101);
+    }
+
+    .card:hover {
+        transform: scale(1.1);
+        transition: 0.25s;
+        background-color: rgb(54, 55, 71);
+        cursor: pointer;
+    }
+
+    .card .nameWrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70%;
+    }
+
+    .card .nameWrap h1 {
+        font-size: 22px;
+        text-align: center;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .card .subjectWrap {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        text-transform: capitalize;
+        width: 100%;
+        height: 30%;
+        background-color: rgb(76, 82, 101);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+    .card .subjectWrap p {
+        font-size: 16px;
+        margin-right: 10px;
+        opacity: 0.8;
     }
 </style>
