@@ -122,12 +122,10 @@
     width: 70%;
     height: 15%;
     /* background-color: rgb(255, 255, 255); */
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: repeat(5, 1fr);
-    overflow-x: scroll;
-    overflow-y: auto;
-    column-gap: 40px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 40px;
     padding-bottom: 40px;
   }
 
@@ -137,7 +135,7 @@
     margin-top: 20px;
     background-color: rgb(61, 62, 81);
     height: 100%;
-    width: 100%;
+    width: 20%;
     color: white;
     display: flex;
     flex-direction: column;
