@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { compute_slots } from "svelte/internal";
+  import Navbar from "./Navbar.svelte";
   import { page } from "../store.js";
   let temp = [];
   let notes = [];
@@ -43,24 +44,35 @@
   }
 </script>
 
-<div class="grid-wrapper">
-  {#each notes as note}
-    <div on:click={() => openLink(note.link)} class="card">
-      <div class="nameWrap">
-        <h1>{note.name}</h1>
+<div class="wrapper">
+  <Navbar />
+
+  <div class="grid-wrapper">
+    {#each notes as note}
+      <div on:click={() => openLink(note.link)} class="card">
+        <div class="nameWrap">
+          <h1>{note.name}</h1>
+        </div>
+        <div class="subjectWrap">
+          <p>{note.subject}</p>
+        </div>
       </div>
-      <div class="subjectWrap">
-        <p>{note.subject}</p>
-      </div>
-    </div>
-  {/each}
+    {/each}
+  </div>
 </div>
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
   .grid-wrapper {
     width: 70%;
-    height: 100%;
+    height: 90%;
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: repeat(5, 1fr);

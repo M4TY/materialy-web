@@ -1,22 +1,23 @@
 <nav>
-  <a>Čeština</a>
-  <a>Matematika</a>
+  <a href="/">Zápisky</a>
+  <a href="/">Kvízy</a>
 </nav>
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap");
   nav {
-    background-color: rgb(35, 32, 37);
-    height: 6%;
+    background-color: 3d3e51;
+    height: 8%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     flex-direction: row;
+    border-bottom: 2px solid rgb(53, 53, 53);
   }
   nav a {
-    font-size: 20px;
+    font-size: 2rem;
     font-family: "Roboto", sans-serif;
     text-decoration: none;
     color: white;

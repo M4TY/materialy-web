@@ -23,3 +23,7 @@ node_modules
 _actual*.*
 _output
 /types
+public/build/
+public/build/
+public/build/
+public/build/
