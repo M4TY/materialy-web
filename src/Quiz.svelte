@@ -242,10 +242,12 @@
 
   .answershown {
     display: auto;
+    text-align: center;
   }
 
   .question {
     font-size: 45px;
+    text-align: center;
   }
 
   .answershown {
