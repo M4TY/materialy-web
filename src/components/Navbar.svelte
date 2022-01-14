@@ -1,6 +1,11 @@
+<script>
+  export let quizActive = "";
+  export let notesActive = "";
+</script>
+
 <nav>
-  <a href="/">Zápisky</a>
-  <a href="/quiz">Kvízy</a>
+  <a class={notesActive} href="/">Zápisky</a>
+  <a class={quizActive} href="/quiz">Kvízy</a>
 </nav>
 
 <style>
@@ -27,5 +32,9 @@
     cursor: pointer;
     transition: 0.25s;
     opacity: 0.7;
+  }
+
+  .active {
+    opacity: 0.6;
   }
 </style>

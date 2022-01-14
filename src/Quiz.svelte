@@ -81,7 +81,7 @@
 </script>
 
 <div class="wrapper">
-  <Navbar />
+  <Navbar quizActive={"active"} notes={""} />
 
   <div class="grid-wrapper">
     {#each quizzes as quiz, i}

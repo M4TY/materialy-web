@@ -45,7 +45,7 @@
 </script>
 
 <div class="wrapper">
-  <Navbar />
+  <Navbar notesActive={"active"} />
 
   <div class="grid-wrapper">
     {#each notes as note}
