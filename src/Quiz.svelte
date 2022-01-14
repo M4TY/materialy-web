@@ -49,6 +49,8 @@
 
   function chooseQuiz(i) {
     currentQuiz = i;
+    currentQuestion = 1;
+    let answerShown = "hidden";
     questionLabel.innerHTML = quizzes[i][currentQuestion].question;
     answerLabel.innerHTML = quizzes[i][currentQuestion].answer;
   }
@@ -58,6 +60,7 @@
     currentQuestion += 1;
     questionLabel.innerHTML = quizzes[currentQuiz][currentQuestion].question;
     answerLabel.innerHTML = quizzes[currentQuiz][currentQuestion].answer;
+    answerShown = "hidden";
   }
 
   function previous() {
@@ -65,6 +68,7 @@
     currentQuestion -= 1;
     questionLabel.innerHTML = quizzes[currentQuiz][currentQuestion].question;
     answerLabel.innerHTML = quizzes[currentQuiz][currentQuestion].answer;
+    answerShown = "hidden";
   }
 
   function toggleAnswer() {
@@ -93,8 +97,8 @@
   </div>
   <div class="questionMenuWrapper">
     <div class="text">
-      <p bind:this={questionLabel}>otazka</p>
-      <p class={answerShown} bind:this={answerLabel}>odpoved</p>
+      <p class="question" bind:this={questionLabel}>Vyber si téma</p>
+      <p class="answer{answerShown}" bind:this={answerLabel} />
     </div>
     <div class="nav">
       <button on:click={previous}>Předchozí</button>
@@ -191,33 +195,63 @@
   }
 
   .text {
-    background-color: white;
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(61, 62, 81);
+    border-radius: 3px;
+    color: white;
     width: 100%;
     height: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 20px;
   }
 
   .nav {
-    background-color: purple;
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(44, 42, 44);
     height: 10%;
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 10%;
-    align-items: center;
+    align-items: flex-start;
   }
 
-  .hidden {
+  .nav button {
+    height: 100%;
+    width: 20%;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    font-size: 20px;
+    transition: 0.25s;
+  }
+
+  .nav button:hover {
+    height: 100%;
+    width: 20%;
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    font-size: 20px;
+    transition: 0.25s;
+  }
+  .answerhidden {
     display: none;
   }
 
-  .shown {
+  .answershown {
     display: auto;
   }
 
+  .question {
+    font-size: 45px;
+  }
+
+  .answershown {
+    font-size: 40px;
+    color: rgb(177, 177, 177);
+  }
   @media only screen and (max-width: 736px) {
     .grid-wrapper {
       width: 40%;
