@@ -31,7 +31,7 @@
   .flexWrapper iframe {
     width: 100%;
     height: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(38, 38, 38);
   }
   .wrap {
     display: flex;
