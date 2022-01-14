@@ -118,6 +118,7 @@
     width: 100%;
   }
   .grid-wrapper {
+    padding-left: 20px;
     width: 70%;
     height: 15%;
     /* background-color: rgb(255, 255, 255); */
