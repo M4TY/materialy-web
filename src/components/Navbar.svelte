@@ -1,6 +1,6 @@
 <nav>
   <a href="/">Zápisky</a>
-  <a href="/">Kvízy</a>
+  <a href="/quiz">Kvízy</a>
 </nav>
 
 <style>
