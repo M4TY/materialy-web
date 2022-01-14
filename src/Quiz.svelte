@@ -124,6 +124,7 @@
     /* background-color: rgb(255, 255, 255); */
     display: flex;
     flex-direction: row;
+    overflow-y: hidden;
     overflow-x: auto;
     gap: 40px;
     padding-bottom: 40px;
