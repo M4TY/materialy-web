@@ -5,6 +5,7 @@
   import { page } from "../store.js";
   let temp = [];
   let notes = [];
+  let categories = [];
 
   function fetchData() {
     fetch(
@@ -36,6 +37,19 @@
         notes = [...notes, obj];
       }
     });
+    notes.forEach((singleNote) => {
+      if (categories.some((e) => e.subject === singleNote.subject)) return;
+      let obj = {
+        subject: singleNote.subject,
+        subjectNotes: [],
+      };
+      categories.push(obj);
+    });
+    categories = categories;
+    notes.forEach((singleNote) => {
+      let index = categories.map((e) => e.subject).indexOf(singleNote.subject);
+      categories[index].subjectNotes.push(singleNote);
+    });
   }
 
   function openLink(link) {
@@ -47,16 +61,20 @@
 <div class="wrapper">
   <Navbar notesActive={"active"} />
 
-  <div class="grid-wrapper">
-    {#each notes as note}
-      <div on:click={() => openLink(note.link)} class="card">
-        <div class="nameWrap">
-          <h1>{note.name}</h1>
+  <div class="categories-wrapper">
+    {#each categories as category}
+      <h1 class="categoryH">{category.subject}</h1>
+      <hr class="line" />
+      {#each category.subjectNotes as note}
+        <div on:click={() => openLink(note.link)} class="card">
+          <div class="nameWrap">
+            <h1>{note.name}</h1>
+          </div>
+          <div class="subjectWrap">
+            <p>{note.subject}</p>
+          </div>
         </div>
-        <div class="subjectWrap">
-          <p>{note.subject}</p>
-        </div>
-      </div>
+      {/each}
     {/each}
   </div>
 </div>
@@ -70,14 +88,26 @@
     align-items: center;
     width: 100%;
   }
-  .grid-wrapper {
+  .categories-wrapper {
     width: 70%;
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-row-gap: 80px;
-    grid-column-gap: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .categories-wrapper .categoryH {
+    font-family: "Roboto", sans-serif;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  .categories-wrapper .line {
+    width: 20%;
+    border-color: rgb(100, 100, 100);
   }
 
   .card {
@@ -85,8 +115,8 @@
     font-family: "Roboto", sans-serif;
     margin-top: 20px;
     background-color: rgb(61, 62, 81);
-    height: 100%;
-    width: 100%;
+    height: 120px;
+    width: 20%;
     color: white;
     display: flex;
     flex-direction: column;
@@ -147,53 +177,26 @@
   }
 
   @media screen and (min-width: 320px) and (max-width: 800px) {
-    .grid-wrapper {
-      width: 40%;
-
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      padding-bottom: 20px;
-    }
-    .card .nameWrap h1 {
-      font-size: 1.2em;
-    }
-
-    .card .subjectWrap p {
-      font-size: 1em;
-    }
-
     .card {
-      border-radius: 3px;
-      height: 100px;
+      width: 50%;
     }
 
-    .card .subjectWrap {
-      border-bottom-left-radius: 3px;
-      border-bottom-right-radius: 3px;
+    .categories-wrapper .line {
+      width: 50%;
+    }
+
+    .card .nameWrap h1 {
+      font-size: 1rem;
     }
   }
 
   @media screen and (min-width: 800px) and (max-width: 1400px) {
-    .grid-wrapper {
-      width: 40%;
-
-      display: grid;
-      grid-auto-flow: row;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(10, 1fr);
-      grid-row-gap: 40px;
-    }
-    .grid-wrapper:last-child {
-      margin-bottom: 20px;
-    }
-
     .card .nameWrap h1 {
-      font-size: 1.2em;
+      font-size: 1.2rem;
     }
 
     .card .subjectWrap p {
-      font-size: 1em;
+      font-size: 1rem;
     }
 
     .card {
