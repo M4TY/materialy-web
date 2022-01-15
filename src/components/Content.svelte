@@ -108,7 +108,7 @@
   }
 
   .card:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 0.25s;
     background-color: rgb(54, 55, 71);
     cursor: pointer;

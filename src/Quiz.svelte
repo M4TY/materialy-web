@@ -45,12 +45,14 @@
   let currentQuiz = 0;
   let questionLabel;
   let answerLabel;
+  let currentLabel;
   let answerShown = "shown";
 
   function chooseQuiz(i) {
     currentQuiz = i;
     currentQuestion = 1;
     answerShown = "hidden";
+    currentLabel.innerHTML = quizzes[i][0].theme;
     questionLabel.innerHTML = quizzes[i][currentQuestion].question;
     answerLabel.innerHTML = quizzes[i][currentQuestion].answer;
   }
@@ -96,6 +98,7 @@
     {/each}
   </div>
   <div class="questionMenuWrapper">
+    <p class="current" bind:this={currentLabel} />
     <div class="text">
       <p class="question" bind:this={questionLabel}>Vyber si téma</p>
       <p class="answer{answerShown}" bind:this={answerLabel}>
@@ -160,7 +163,7 @@
   }
 
   .card:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 0.25s;
     background-color: rgb(54, 55, 71);
     cursor: pointer;
@@ -267,6 +270,17 @@
   .answershown {
     font-size: 40px;
     color: rgb(177, 177, 177);
+  }
+
+  .current {
+    font-family: "Roboto", sans-serif;
+    padding-top: 10px;
+    background-color: rgb(61, 62, 81);
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   @media only screen and (max-width: 736px) {
     .grid-wrapper {
