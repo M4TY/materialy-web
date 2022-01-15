@@ -45,12 +45,12 @@
   let currentQuiz = 0;
   let questionLabel;
   let answerLabel;
-  let answerShown = "hidden";
+  let answerShown = "shown";
 
   function chooseQuiz(i) {
     currentQuiz = i;
     currentQuestion = 1;
-    let answerShown = "hidden";
+    answerShown = "hidden";
     questionLabel.innerHTML = quizzes[i][currentQuestion].question;
     answerLabel.innerHTML = quizzes[i][currentQuestion].answer;
   }
@@ -98,7 +98,9 @@
   <div class="questionMenuWrapper">
     <div class="text">
       <p class="question" bind:this={questionLabel}>Vyber si téma</p>
-      <p class="answer{answerShown}" bind:this={answerLabel} />
+      <p class="answer{answerShown}" bind:this={answerLabel}>
+        Za stoprocentní správnost otázek neručíme
+      </p>
     </div>
     <div class="nav">
       <button on:click={previous}>Předchozí</button>
@@ -143,6 +145,18 @@
     border-radius: 15px;
     transition: 0.25s;
     box-shadow: 1px 1px 10px rgb(76, 82, 101);
+    animation: fadeIn 1s;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      translate: 100% 0%;
+    }
+    100% {
+      opacity: 1;
+      translate: 0 0%;
+    }
   }
 
   .card:hover {

@@ -94,6 +94,18 @@
     border-radius: 15px;
     transition: 0.25s;
     box-shadow: 1px 1px 10px rgb(76, 82, 101);
+    animation: fadeIn 1s;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      translate: -100% 0%;
+    }
+    100% {
+      opacity: 1;
+      translate: 0 0%;
+    }
   }
 
   .card:hover {
