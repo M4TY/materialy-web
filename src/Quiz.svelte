@@ -326,8 +326,37 @@
     .nav button {
       font-size: 0.6rem;
     }
+
+    .nav button:hover {
+      font-size: 0.6rem;
+    }
   }
 
   @media screen and (min-width: 800px) and (max-width: 1400px) {
+    .card {
+      font-size: 1rem;
+    }
+
+    .question {
+      font-size: 2rem;
+    }
+
+    .answerhidden {
+      font-size: 1rem;
+      width: 50%;
+    }
+
+    .answershown {
+      font-size: 1rem;
+      width: 50%;
+    }
+
+    .nav button {
+      font-size: 0.6rem;
+    }
+
+    .nav button:hover {
+      font-size: 0.6rem;
+    }
   }
 </style>

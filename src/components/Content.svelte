@@ -72,7 +72,6 @@
   }
   .grid-wrapper {
     width: 70%;
-    height: 90%;
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: repeat(5, 1fr);
@@ -151,16 +150,11 @@
     .grid-wrapper {
       width: 40%;
 
-      display: grid;
-      grid-auto-flow: row;
-      grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: repeat(10, 1fr);
-      grid-row-gap: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding-bottom: 20px;
     }
-    .grid-wrapper:last-child {
-      margin-bottom: 20px;
-    }
-
     .card .nameWrap h1 {
       font-size: 1.2em;
     }
@@ -171,6 +165,7 @@
 
     .card {
       border-radius: 3px;
+      height: 100px;
     }
 
     .card .subjectWrap {

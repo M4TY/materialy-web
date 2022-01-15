@@ -27,6 +27,8 @@
     text-decoration: none;
     color: white;
     transition: 0.25s;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
   nav a:hover {
     cursor: pointer;
