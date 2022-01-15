@@ -299,4 +299,35 @@
       border-bottom-right-radius: 3px;
     }
   }
+
+  @media screen and (min-width: 320px) and (max-width: 800px) {
+    .grid-wrapper {
+      width: 70%;
+    }
+
+    .card {
+      width: 50%;
+      height: 100%;
+      font-size: 1rem;
+    }
+
+    .question {
+      font-size: 2rem;
+    }
+
+    .answerhidden {
+      font-size: 1rem;
+    }
+
+    .answershown {
+      font-size: 1rem;
+    }
+
+    .nav button {
+      font-size: 0.6rem;
+    }
+  }
+
+  @media screen and (min-width: 800px) and (max-width: 1400px) {
+  }
 </style>

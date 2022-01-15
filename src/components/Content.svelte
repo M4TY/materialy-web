@@ -147,7 +147,7 @@
     opacity: 0.8;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media screen and (min-width: 320px) and (max-width: 800px) {
     .grid-wrapper {
       width: 40%;
 
@@ -179,7 +179,7 @@
     }
   }
 
-  @media only screen and (max-width: 1100px) {
+  @media screen and (min-width: 800px) and (max-width: 1400px) {
     .grid-wrapper {
       width: 40%;
 
