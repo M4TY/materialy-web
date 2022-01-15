@@ -65,16 +65,18 @@
     {#each categories as category}
       <h1 class="categoryH">{category.subject}</h1>
       <hr class="line" />
-      {#each category.subjectNotes as note}
-        <div on:click={() => openLink(note.link)} class="card">
-          <div class="nameWrap">
-            <h1>{note.name}</h1>
+      <div class="card-wrapper">
+        {#each category.subjectNotes as note}
+          <div on:click={() => openLink(note.link)} class="card">
+            <div class="nameWrap">
+              <h1>{note.name}</h1>
+            </div>
+            <div class="subjectWrap">
+              <p>{note.subject}</p>
+            </div>
           </div>
-          <div class="subjectWrap">
-            <p>{note.subject}</p>
-          </div>
-        </div>
-      {/each}
+        {/each}
+      </div>
     {/each}
   </div>
 </div>
@@ -94,6 +96,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .card-wrapper {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
   }
 
   .categories-wrapper .categoryH {
@@ -116,7 +127,7 @@
     margin-top: 20px;
     background-color: rgb(61, 62, 81);
     height: 120px;
-    width: 20%;
+    width: 30%;
     color: white;
     display: flex;
     flex-direction: column;
@@ -178,7 +189,7 @@
 
   @media screen and (min-width: 320px) and (max-width: 800px) {
     .card {
-      width: 50%;
+      width: 100%;
     }
 
     .categories-wrapper .line {
@@ -201,6 +212,7 @@
 
     .card {
       border-radius: 3px;
+      width: 40%;
     }
 
     .card .subjectWrap {
