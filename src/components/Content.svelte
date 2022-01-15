@@ -147,13 +147,45 @@
     opacity: 0.8;
   }
 
-  @media only screen and (max-width: 736px) {
+  @media only screen and (max-width: 768px) {
     .grid-wrapper {
       width: 40%;
 
       display: grid;
       grid-auto-flow: row;
       grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(10, 1fr);
+      grid-row-gap: 40px;
+    }
+    .grid-wrapper:last-child {
+      margin-bottom: 20px;
+    }
+
+    .card .nameWrap h1 {
+      font-size: 1.2em;
+    }
+
+    .card .subjectWrap p {
+      font-size: 1em;
+    }
+
+    .card {
+      border-radius: 3px;
+    }
+
+    .card .subjectWrap {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+
+  @media only screen and (max-width: 1100px) {
+    .grid-wrapper {
+      width: 40%;
+
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(10, 1fr);
       grid-row-gap: 40px;
     }
