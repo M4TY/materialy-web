@@ -18,7 +18,9 @@ function serve() {
         writeBundle() {
             if (server) return;
             server = require("child_process").spawn(
-                "npm", ["run", "start", "--", "--dev"], {
+                "npm",
+                ["run", "start", "--", "--dev"],
+                {
                     stdio: ["ignore", "inherit", "inherit"],
                     shell: true,
                 }
@@ -30,7 +32,8 @@ function serve() {
     };
 }
 
-export default [{
+export default [
+    {
         input: "src/main.js",
         output: {
             sourcemap: true,
@@ -169,12 +172,12 @@ export default [{
         },
     },
     {
-        input: "src/Presentations.js",
+        input: "src/presentations.js",
         output: {
             sourcemap: true,
             format: "iife",
             name: "app",
-            file: "public/build/Presentations.js",
+            file: "public/build/presentations.js",
         },
         plugins: [
             svelte({
@@ -185,7 +188,7 @@ export default [{
             }),
             // we'll extract any component CSS out into
             // a separate file - better for performance
-            css({ output: "Presentations.css" }),
+            css({ output: "presentations.css" }),
 
             // If you have external dependencies installed from
             // npm, you'll most likely need these plugins. In
