@@ -1,10 +1,12 @@
 <script>
   export let quizActive = "";
   export let notesActive = "";
+  export let prActive = "";
 </script>
 
 <nav>
   <a class={notesActive} href="/">Zápisky</a>
+  <a class={prActive} href="/presentations">Prezentace</a>
   <a class={quizActive} href="/quiz">Kvízy</a>
 </nav>
 
