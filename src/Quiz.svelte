@@ -80,6 +80,16 @@
         answerShown = "hidden";
     }
 
+    function random() {
+        currentQuestion = Math.floor(
+            Math.random() * (quizzes[currentQuiz].length - 1 + 1) + 1
+        );
+        questionLabel.innerHTML =
+            quizzes[currentQuiz][currentQuestion].question;
+        answerLabel.innerHTML = quizzes[currentQuiz][currentQuestion].answer;
+        answerShown = "hidden";
+    }
+
     function toggleAnswer() {
         if (answerShown === "hidden") {
             answerShown = "shown";
@@ -115,6 +125,7 @@
         <div class="nav">
             <button on:click={previous}>Předchozí</button>
             <button on:click={next}>Další</button>
+            <button on:click={random}>Náhodná otázka</button>
             <button on:click={toggleAnswer}>Ukázat odpověď</button>
         </div>
     </div>
