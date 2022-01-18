@@ -37,19 +37,6 @@
         notes = [...notes, obj];
       }
     });
-    notes.forEach((singleNote) => {
-      if (categories.some((e) => e.subject === singleNote.subject)) return;
-      let obj = {
-        subject: singleNote.subject,
-        subjectNotes: [],
-      };
-      categories.push(obj);
-    });
-    categories = categories;
-    notes.forEach((singleNote) => {
-      let index = categories.map((e) => e.subject).indexOf(singleNote.subject);
-      categories[index].subjectNotes.push(singleNote);
-    });
   }
 
   function openLink(link) {
@@ -62,22 +49,19 @@
   <Navbar prActive={"active"} />
 
   <div class="categories-wrapper">
-    {#each categories as category}
-      <h1 class="categoryH">{category.subject}</h1>
-      <hr class="line" />
-      <div class="card-wrapper">
-        {#each category.subjectNotes as note}
-          <div on:click={() => openLink(note.link)} class="card">
-            <div class="nameWrap">
-              <h1>{note.name}</h1>
-            </div>
-            <div class="subjectWrap">
-              <p>{note.subject}</p>
-            </div>
+    <div class="card-wrapper">
+      {#each notes as note}
+        <div on:click={() => openLink(note.link)} class="card">
+          <div class="nameWrap">
+            <h1>{note.name}</h1>
           </div>
-        {/each}
-      </div>
-    {/each}
+          <div class="subjectWrap">
+            <a href="">Odkaz</a>
+            <a href="">Shrnutí</a>
+          </div>
+        </div>
+      {/each}
+    </div>
   </div>
 </div>
 
@@ -181,10 +165,11 @@
     border-bottom-right-radius: 15px;
   }
 
-  .card .subjectWrap p {
+  .card .subjectWrap a {
     font-size: 16px;
     margin-right: 10px;
     opacity: 0.8;
+    color: white;
   }
 
   @media screen and (min-width: 320px) and (max-width: 800px) {

@@ -6,7 +6,7 @@
 
 <nav>
   <a class={notesActive} href="/">Zápisky</a>
-  <a class={prActive} href="/presentations">Prezentace</a>
+  <a class={prActive} href="/presentations">Knihy</a>
   <a class={quizActive} href="/quiz">Kvízy</a>
 </nav>
 
