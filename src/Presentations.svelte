@@ -18,6 +18,12 @@
 
     function populateBooks(response) {
         response.forEach((element) => {
+            element = {
+                name: "Máj",
+                author: "Karel Hynek Macha",
+                souhrn: "",
+                linkToBook: "https://web2.mlp.cz/koweb/00/04/29/98/19/maj.pdf",
+            };
             books = [...books, element];
         });
     }
@@ -33,6 +39,7 @@
                 <div class="card">
                     <div class="nameWrap">
                         <h1>{book.name}</h1>
+                        <p>{book.author}</p>
                     </div>
                     <div class="subjectWrap">
                         <a href={book.linkToBook} target="_blank">Odkaz</a>
@@ -124,12 +131,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        gap: 10px;
         width: 100%;
         height: 70%;
     }
 
     .card .nameWrap h1 {
         font-size: 22px;
+        text-align: center;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    .card .nameWrap p {
+        font-size: 16px;
+        color: rgb(184, 182, 182);
         text-align: center;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
@@ -158,18 +173,21 @@
             width: 100%;
         }
 
-        .categories-wrapper .line {
-            width: 50%;
-        }
-
         .card .nameWrap h1 {
-            font-size: 1rem;
+            font-size: 1.2rem;
+        }
+        .card .nameWrap p {
+            font-size: 0.8rem;
         }
     }
 
     @media screen and (min-width: 800px) and (max-width: 1400px) {
         .card .nameWrap h1 {
             font-size: 1.2rem;
+        }
+
+        .card .nameWrap p {
+            font-size: 0.8rem;
         }
 
         .card .subjectWrap p {
