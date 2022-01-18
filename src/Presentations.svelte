@@ -18,12 +18,6 @@
 
     function populateBooks(response) {
         response.forEach((element) => {
-            element = {
-                name: "Máj",
-                author: "Karel Hynek Macha",
-                souhrn: "",
-                linkToBook: "https://web2.mlp.cz/koweb/00/04/29/98/19/maj.pdf",
-            };
             books = [...books, element];
         });
     }
