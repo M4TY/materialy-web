@@ -1,13 +1,11 @@
 <script>
 	export let notesActive = '';
-	export let booksActive = '';
 	export let quizzesActive = '';
 </script>
 
 <nav>
 	<div class="buttons">
 		<a class={notesActive} href="/">Zápisky</a>
-		<a class={booksActive} href="/knihy">Knihy</a>
 		<a class={quizzesActive} href="/kvizy">Kvízy</a>
 	</div>
 </nav>
@@ -34,6 +32,7 @@
 		margin: 5px;
 	}
 	.buttons a {
+		margin-top: 10px;
 		color: white;
 		text-decoration: none;
 		font-size: 30px;

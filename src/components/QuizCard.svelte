@@ -1,14 +1,9 @@
 <script>
 	export let title;
 	export let subject;
-	export let link;
-
-	function onClick() {
-		window.open('/note?link=' + link, '_self');
-	}
 </script>
 
-<div on:click={onClick} class="card">
+<div class="card">
 	<section class="top">
 		<h2>{title}</h2>
 	</section>
@@ -23,6 +18,7 @@
 		font-family: 'Montserrat', sans-serif;
 		background-color: #334756;
 		width: 200px;
+		height: 150px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -30,7 +26,6 @@
 		border-radius: 1vmin;
 		transition: 0.25s;
 		box-shadow: 0 0 10px rgb(51, 51, 51);
-		height: 150px;
 	}
 	.card:hover {
 		transform: scale(1.05);
@@ -47,7 +42,7 @@
 	.top h2 {
 		color: white;
 		font-weight: bold;
-		font-size: 22px;
+		font-size: 23px;
 		margin: 30px;
 		text-align: center;
 	}
@@ -64,5 +59,20 @@
 	.bottom p {
 		margin: 10px;
 		color: rgb(185, 185, 185);
+	}
+
+	@media screen and (min-width: 320px) and (max-width: 800px) {
+		.card {
+			height: 75px;
+			width: 100px;
+		}
+		.top h2 {
+			font-size: 12px;
+			margin: 0px;
+		}
+		.bottom p {
+			font-size: 10px;
+			margin: 10px;
+		}
 	}
 </style>

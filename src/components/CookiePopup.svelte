@@ -1,0 +1,42 @@
+<script>
+	import { cookiesAgreed } from '../stores/store.js';
+	let popup;
+	function Close() {
+		console.log('clicked');
+		cookiesAgreed.set('true');
+	}
+</script>
+
+<div class="wrapper">
+	<p>Používáním této stránky souhlasíte se zpracováním souborů cookies</p>
+	<button on:click={Close}>OK</button>
+</div>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
+	.wrapper {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		height: 5%;
+		background-color: rgba(29, 29, 29, 0.9);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.wrapper p {
+		font-family: 'Montserrat', sans-serif;
+		color: white;
+		margin-left: 10px;
+	}
+
+	.wrapper button {
+		margin-right: 10px;
+		background: none;
+		color: white;
+		border: 1px solid white;
+		font-size: 18px;
+		width: 10%;
+	}
+</style>

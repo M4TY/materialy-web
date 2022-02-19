@@ -1,18 +1,111 @@
 <script>
+	import { onMount } from 'svelte';
 	import Card from '../components/Card.svelte';
+
+	let temp = [];
+	let notes = [];
+	let categories = [];
+
+	function fetchData() {
+		fetch('https://api.github.com/repos/M4TY/zapisky/git/trees/main?recursive=1')
+			.then((response) => response.json())
+			.then((data) => {
+				temp = data.tree;
+				filterData(temp);
+			});
+	}
+	onMount(fetchData);
+	function filterData(data) {
+		data.forEach((element) => {
+			if (element.path.endsWith('.html')) {
+				let splitted = element.path.split('/');
+				let tempSubj = splitted[0];
+				let tempName = splitted[1].split('.')[0];
+				let tempLink = 'https://raw.githubusercontent.com/M4TY/zapisky/main/' + element.path;
+				let obj = {
+					subject: tempSubj,
+					name: tempName,
+					link: tempLink
+				};
+				notes = [...notes, obj];
+			}
+		});
+		notes.forEach((singleNote) => {
+			if (categories.some((e) => e.subject === singleNote.subject)) return;
+			let obj = {
+				subject: singleNote.subject,
+				subjectNotes: []
+			};
+			categories.push(obj);
+		});
+		categories = categories;
+		notes.forEach((singleNote) => {
+			let index = categories.map((e) => e.subject).indexOf(singleNote.subject);
+			categories[index].subjectNotes.push(singleNote);
+		});
+	}
 </script>
 
 <div class="content">
-	<Card title="Maj" subject="Čeština" link="http://google.com" />
+	<div class="categories-wrapper">
+		{#each categories as category}
+			<h2>{category.subject}</h2>
+			<hr class="line" />
+			<div class="cards-wrapper">
+				{#each category.subjectNotes as note}
+					<Card title={note.name} subject={note.subject} link={note.link} />
+				{/each}
+			</div>
+		{/each}
+	</div>
 </div>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 	.content {
+		font-family: 'Montserrat', sans-serif;
+		width: 100vw;
+		height: 100vh;
 		margin-top: 20px;
 		background-color: rgb(0, 0, 0);
-		width: 100%;
-		height: 100%;
 		display: flex;
+		align-items: center;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.categories-wrapper h1 {
+		color: white;
+	}
+
+	.categories-wrapper {
+		color: white;
+		width: 50%;
+		/* background-color: red; */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.categories-wrapper h2 {
+		font-size: 32px;
+		font-weight: bold;
+		margin-top: 20px;
+	}
+	.categories-wrapper h2:first-child {
+		margin-top: 0px;
+	}
+
+	.categories-wrapper hr {
+		width: 15%;
+		margin-bottom: 20px;
+	}
+
+	.cards-wrapper {
+		width: 80%;
+		display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
 		gap: 20px;
