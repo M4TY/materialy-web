@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import Card from '../components/Card.svelte';
+	import Footer from '../components/Footer.svelte';
 
 	let temp = [];
 	let notes = [];
@@ -58,6 +59,7 @@
 			</div>
 		{/each}
 	</div>
+	<Footer />
 </div>
 
 <style>
