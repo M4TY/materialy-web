@@ -1,12 +1,7 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/env';
-import { compute_slots } from 'svelte/internal';
 
-export const cookiesAgreed = writable('false');
-
-cookiesAgreed.subscribe((value) => {
-	if (browser) {
-		console.log(value);
-		window.localStorage.setItem('cookiesAgreed', value);
-	}
+export const cookies = writable((browser && localStorage.getItem('cookies')) || 'false');
+cookies.subscribe((val) => {
+	if (browser) return (localStorage.cookies = val);
 });

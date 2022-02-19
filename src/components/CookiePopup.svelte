@@ -1,8 +1,8 @@
 <script>
-	import { cookiesAgreed } from '../stores/store.js';
+	import { cookies } from '../stores/store.js';
 	let popup;
 	function Close() {
-		console.log('clicked');
+		cookies.set('true');
 		popup.style.display = 'none';
 	}
 </script>
@@ -38,5 +38,21 @@
 		border: 1px solid white;
 		font-size: 18px;
 		width: 10%;
+		transition: 0.25s;
+	}
+	.wrapper button:hover {
+		cursor: pointer;
+		background: gray;
+		transition: 0.25s;
+	}
+
+	@media screen and (min-width: 320px) and (max-width: 800px) {
+		.wrapper p {
+			font-size: 12px;
+		}
+		.wrapper button {
+			font-size: 10px;
+			margin-right: 10px;
+		}
 	}
 </style>

@@ -65,4 +65,14 @@
 		margin: 10px;
 		color: rgb(185, 185, 185);
 	}
+	@media screen and (min-width: 320px) and (max-width: 800px) {
+		.card {
+			width: 200px;
+			height: 150px;
+		}
+		.top h2 {
+			font-size: 16px;
+			margin: 5px;
+		}
+	}
 </style>

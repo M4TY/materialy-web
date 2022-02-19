@@ -3,11 +3,12 @@
 	import Card from '../components/Card.svelte';
 	import Content from '../components/Content.svelte';
 	import CookiePopup from '../components/CookiePopup.svelte';
-	import { cookiesAgreed } from '../stores/store.js';
+	import { cookies } from '../stores/store.js';
+	console.log($cookies);
 </script>
 
 <Navbar notesActive="active" />
 <Content />
-{#if $cookiesAgreed}
+{#if $cookies === 'false'}
 	<CookiePopup />
 {/if}
