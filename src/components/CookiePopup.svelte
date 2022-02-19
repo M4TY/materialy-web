@@ -3,11 +3,11 @@
 	let popup;
 	function Close() {
 		console.log('clicked');
-		cookiesAgreed.set('true');
+		popup.style.display = 'none';
 	}
 </script>
 
-<div class="wrapper">
+<div bind:this={popup} class="wrapper">
 	<p>Používáním této stránky souhlasíte se zpracováním souborů cookies</p>
 	<button on:click={Close}>OK</button>
 </div>
