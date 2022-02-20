@@ -14,7 +14,7 @@
 	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 	nav {
 		background-color: #000000;
-		width: 100%;
+		width: 100vw;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -24,7 +24,7 @@
 	.buttons {
 		font-family: 'Montserrat', sans-serif;
 		background-color: #000000;
-		width: 50%;
+		width: 50vw;
 		display: flex;
 		justify-content: center;
 		align-items: center;
