@@ -128,6 +128,7 @@
 		gap: 20px;
 		border: 1px solid gray;
 		border-radius: 1vmin;
+		overflow-y: hidden;
 	}
 
 	.questionMenuWrapper {

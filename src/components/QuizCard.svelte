@@ -30,6 +30,7 @@
 	.card:hover {
 		transform: scale(1.05);
 		transition: 0.25s;
+		cursor: pointer;
 	}
 
 	.top {
@@ -45,6 +46,12 @@
 		font-size: 23px;
 		margin: 30px;
 		text-align: center;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 	.bottom {
 		display: flex;
@@ -59,6 +66,12 @@
 	.bottom p {
 		margin: 10px;
 		color: rgb(185, 185, 185);
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 
 	@media screen and (min-width: 320px) and (max-width: 800px) {

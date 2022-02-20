@@ -2,14 +2,27 @@
 	import Navbar from '../components/Navbar.svelte';
 	import { onMount } from 'svelte';
 	let users = [];
+	let quota = 0;
+
 	function fetchdata() {
 		fetch('https://api.github.com/repos/M4TY/zapisky/contributors')
 			.then((res) => res.json())
-			.then((data) => (users = [...data]));
+			.then((data) => (users = [...data]))
+			.then((final) => filterGhostCommits());
 	}
 
 	onMount(fetchdata);
 
+	function filterGhostCommits() {
+		for (let index = 1; index < users.length; index++) {
+			const element = users[index];
+
+			console.log(element.contributions);
+			quota += element.contributions;
+		}
+
+		users[0].contributions -= quota;
+	}
 	function open(link) {
 		window.open(link);
 	}
