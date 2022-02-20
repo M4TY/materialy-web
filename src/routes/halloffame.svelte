@@ -79,5 +79,8 @@
 			width: 100%;
 			font-size: 12px;
 		}
+		.slot {
+			width: 90%;
+		}
 	}
 </style>

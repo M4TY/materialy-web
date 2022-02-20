@@ -3,6 +3,7 @@
 	import Card from '../components/Card.svelte';
 	import Footer from '../components/Footer.svelte';
 
+	let loaded = false;
 	let temp = [];
 	let notes = [];
 	let categories = [];
@@ -44,6 +45,7 @@
 			let index = categories.map((e) => e.subject).indexOf(singleNote.subject);
 			categories[index].subjectNotes.push(singleNote);
 		});
+		loaded = true;
 	}
 </script>
 
@@ -59,7 +61,9 @@
 			</div>
 		{/each}
 	</div>
-	<Footer />
+	{#if loaded}
+		<Footer />
+	{/if}
 </div>
 
 <style>
