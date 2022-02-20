@@ -124,7 +124,7 @@
 		width: 80%;
 		display: flex;
 		flex-direction: row;
-		overflow: scroll;
+		overflow: auto;
 		gap: 20px;
 		border: 1px solid gray;
 		border-radius: 1vmin;
