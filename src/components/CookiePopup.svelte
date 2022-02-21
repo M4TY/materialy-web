@@ -8,7 +8,7 @@
 </script>
 
 <div bind:this={popup} class="wrapper">
-	<p>Používáním této stránky souhlasíte se zpracováním souborů cookies</p>
+	<p>Tato stránka využívá službu Google Analytics, jejím používáním souhlasíte s jejími podmínkami.</p>
 	<button on:click={Close}>OK</button>
 </div>
 
