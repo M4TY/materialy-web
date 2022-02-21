@@ -86,7 +86,7 @@
 
 	.categories-wrapper {
 		color: white;
-		width: 50%;
+		width: 90%;
 		/* background-color: red; */
 		display: flex;
 		justify-content: center;
