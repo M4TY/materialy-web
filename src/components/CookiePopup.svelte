@@ -8,7 +8,7 @@
 </script>
 
 <div bind:this={popup} class="wrapper">
-	<p>Tato stránka využívá službu Google Analytics, jejím používáním souhlasíte s jejími podmínkami.</p>
+	<p>Tato stránka využívá službu Google Analytics, jejím používáním souhlasíte s jejími <a href="https://marketingplatform.google.com/about/analytics/terms/cz/">podmínkami</a>.</p>
 	<button on:click={Close}>OK</button>
 </div>
 
