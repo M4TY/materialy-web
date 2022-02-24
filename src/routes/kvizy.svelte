@@ -144,7 +144,8 @@
 	.text {
 		font-family: 'Montserrat', sans-serif;
 		background-color: rgb(61, 62, 81);
-		border-radius: 3px;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
 		color: white;
 		width: 100%;
 		height: 90%;
@@ -205,6 +206,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		margin: 0;
 	}
 
 	@media screen and (min-width: 320px) and (max-width: 800px) {
