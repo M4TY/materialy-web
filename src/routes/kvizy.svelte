@@ -66,7 +66,8 @@
 		answerShown = 'hidden';
 	}
 	function random() {
-		currentQuestion = Math.floor(Math.random() * (quizzes[currentQuiz].length - 1 + 1) + 1);
+		currentQuestion = Math.floor(Math.random() * (quizzes[currentQuiz].length - 1)) + 1;
+		console.log(currentQuestion);
 		questionLabel.innerHTML = quizzes[currentQuiz][currentQuestion].question;
 		answerLabel.innerHTML = quizzes[currentQuiz][currentQuestion].answer;
 		answerShown = 'hidden';
