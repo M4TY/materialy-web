@@ -55,6 +55,7 @@
 		align-items: center;
 		justify-content: flex-start;
 		flex-direction: column;
+		gap: 20px;
 	}
 	.slot {
 		font-family: 'Montserrat', sans-serif;

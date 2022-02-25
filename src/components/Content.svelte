@@ -50,16 +50,20 @@
 </script>
 
 <div class="content">
-	<div class="categories-wrapper">
-		{#each categories as category}
-			<h2>{category.subject}</h2>
-			<hr class="line" />
-			<div class="cards-wrapper">
-				{#each category.subjectNotes as note}
-					<Card title={note.name} subject={note.subject} link={note.link} />
-				{/each}
-			</div>
-		{/each}
+	<div class="main">
+		<div class="ad" />
+		<div class="categories-wrapper">
+			{#each categories as category}
+				<h2>{category.subject}</h2>
+				<hr class="line" />
+				<div class="cards-wrapper">
+					{#each category.subjectNotes as note}
+						<Card title={note.name} subject={note.subject} link={note.link} />
+					{/each}
+				</div>
+			{/each}
+		</div>
+		<div class="ad" />
 	</div>
 	{#if loaded}
 		<Footer />
@@ -72,12 +76,24 @@
 		font-family: 'Montserrat', sans-serif;
 		width: 100vw;
 		height: 100vh;
-		margin-top: 20px;
 		background-color: rgb(0, 0, 0);
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		gap: 20px;
+		gap: 0px;
+	}
+	.main {
+		display: flex;
+	}
+
+	.ad {
+		color: white;
+		background-image: url('https://cdn.matyashimmer.eu/ad.png');
+		background-position: center center;
+		width: 25%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.categories-wrapper h1 {
@@ -85,13 +101,15 @@
 	}
 
 	.categories-wrapper {
+		margin-top: 20px;
 		color: white;
-		width: 90%;
+		width: 100%;
 		/* background-color: red; */
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
+		margin-bottom: 20px;
 	}
 
 	.categories-wrapper h2 {
