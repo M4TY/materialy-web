@@ -61,7 +61,7 @@
 
 <div class="content">
 	<div class="main">
-		<div class="ad" style="background-image: url({image_url});" />
+		<!-- <div class="ad" style="background-image: url({image_url});" /> -->
 		<div class="categories-wrapper">
 			{#each categories as category}
 				<h2>{category.subject}</h2>
@@ -73,7 +73,7 @@
 				</div>
 			{/each}
 		</div>
-		<div class="ad" style="background-image: url({image_url});" />
+		<!-- <div class="ad" style="background-image: url({image_url});" /> -->
 	</div>
 	{#if loaded}
 		<Footer />
