@@ -46,12 +46,22 @@
 			categories[index].subjectNotes.push(singleNote);
 		});
 		loaded = true;
+
+		fetchAd();
+	}
+
+	export let image_url;
+
+	function fetchAd() {
+		fetch('https://cdn.matyashimmer.eu/')
+			.then((res) => res.text())
+			.then((text) => (image_url = text));
 	}
 </script>
 
 <div class="content">
 	<div class="main">
-		<div class="ad" />
+		<div class="ad" style="background-image: url({image_url});" />
 		<div class="categories-wrapper">
 			{#each categories as category}
 				<h2>{category.subject}</h2>
@@ -63,7 +73,7 @@
 				</div>
 			{/each}
 		</div>
-		<div class="ad" />
+		<div class="ad" style="background-image: url({image_url});" />
 	</div>
 	{#if loaded}
 		<Footer />
@@ -88,7 +98,7 @@
 
 	.ad {
 		color: white;
-		background-image: url('https://cdn.matyashimmer.eu/ad.png');
+		/* background-image: url('https://cdn.matyashimmer.eu/ad.png'); */
 		background-position: center center;
 		width: 25%;
 		display: flex;
