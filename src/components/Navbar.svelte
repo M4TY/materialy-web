@@ -33,6 +33,7 @@
 	}
 	.buttons a {
 		margin-top: 10px;
+                margin-bottom: 10px;
 		color: white;
 		text-decoration: none;
 		font-size: 30px;
