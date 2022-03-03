@@ -63,7 +63,7 @@
 	<div class="options">
 		<button on:click={addQuestion}>Přidat otázku</button>
 		<button on:click={exportQuiz}>Exportovat</button>
-		<textarea bind:value={finalText} />
+		<textarea readonly bind:value={finalText} />
 	</div>
 </div>
 
