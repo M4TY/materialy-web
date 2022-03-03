@@ -21,9 +21,10 @@
 			});
 	}
 
-	function removeQuestion(index) {
+	function removeQuestion(index, objec) {
 		console.log(edited);
 		edited.splice(index, 1);
+		// objec.classList.add('animated');
 		edited = edited;
 		finalText = '';
 	}
@@ -47,14 +48,16 @@
 <div class="wrapper">
 	{#each edited as item, i}
 		{#if i === 0}
-			<p class="subject">{item.subject}</p>
-			<p class="theme">{item.theme}</p>
+			<p class="subject">Editace kvízu</p>
+			<p class="theme"><u>{item.theme}</u></p>
 		{:else}
 			<div class="wrapperWindows">
-				<p>{i}</p>
-				<input bind:value={item.question} type="text" />
+				<div class="index">
+					<p>{i}</p>
+				</div>
+				<textarea bind:value={item.question} type="text" />
 				<textarea bind:value={item.answer} type="text" />
-				<button on:click={() => removeQuestion(i)}>🗑️</button>
+				<button on:click={() => removeQuestion(i, this)}>🗑️</button>
 			</div>
 		{/if}
 	{/each}
@@ -83,6 +86,8 @@
 	.wrapper {
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 		gap: 20px;
 	}
 	.wrapperWindows {
@@ -97,15 +102,76 @@
 		flex-direction: column;
 		gap: 10px;
 		position: relative;
+		border-radius: 10px;
+		background-color: rgb(224, 224, 224);
+		animation: fade 1s;
+		transition: 0.25s;
 	}
-	input {
-		font-family: 'Montserrat', sans-serif;
+	@keyframes fade {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	.animated {
+		opacity: 0;
+		transition: 0.25s;
+	}
+	.index {
+		position: absolute;
+		background-color: rgb(61, 62, 81);
+		left: 0px;
+		top: 0;
+		height: 100%;
+		width: 3vmax;
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.index p {
+		text-align: center;
+		width: 100%;
+		color: white;
 	}
 	textarea {
 		font-family: 'Montserrat', sans-serif;
+		text-align: center;
+		resize: none;
 	}
 	.wrapperWindows button {
 		position: absolute;
 		right: 5px;
+		transition: 0.25s;
+		border-radius: 5px;
+		border: 1px solid black;
+	}
+	.wrapperWindows button:hover {
+		transition: 0.25s;
+		opacity: 0.8;
+	}
+	.options {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 20px;
+	}
+	.options button {
+		height: 100%;
+		padding: 10px;
+		font-family: 'Montserrat', sans-serif;
+		font-size: 17px;
+		transition: 0.25s;
+		border: 1px solid black;
+		border-radius: 5px;
+	}
+	.options textarea {
+		height: 100px;
+		margin-bottom: 20px;
+		transition: 0.25s;
 	}
 </style>

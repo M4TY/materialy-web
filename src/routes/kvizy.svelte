@@ -29,6 +29,7 @@
 				...requestLinks,
 				'https://raw.githubusercontent.com/M4TY/zapisky/main/' + element
 			];
+			console.log(requestLinks);
 			fetch('https://raw.githubusercontent.com/M4TY/zapisky/main/' + element)
 				.then((response) => response.json())
 				.then((data) => {
