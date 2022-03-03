@@ -1,9 +1,16 @@
 <script>
 	export let title;
 	export let subject;
+
+	export let link;
+
+	function onClick() {
+		window.open('/editQuiz?quiz=' + link, '_self');
+	}
 </script>
 
 <div class="card">
+	<button on:click={onClick}>Edit</button>
 	<section class="top">
 		<h2>{title}</h2>
 	</section>
@@ -26,6 +33,20 @@
 		border-radius: 1vmin;
 		transition: 0.25s;
 		box-shadow: 0 0 10px rgb(51, 51, 51);
+		position: relative;
+	}
+	button {
+		font-family: 'Montserrat', sans-serif;
+		position: absolute;
+		right: 0;
+		border: none;
+		box-shadow: none;
+		color: rgb(0, 0, 0);
+		font-size: 16px;
+		border-top-right-radius: 1vmin;
+	}
+	button:hover {
+		cursor: pointer;
 	}
 	.card:hover {
 		transform: scale(1.05);
@@ -86,6 +107,9 @@
 		.bottom p {
 			font-size: 10px;
 			margin: 10px;
+		}
+		button {
+			display: none;
 		}
 	}
 </style>

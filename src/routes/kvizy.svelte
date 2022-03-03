@@ -5,6 +5,7 @@
 	let temp = [];
 	let quizzes = [];
 	let links = [];
+	let requestLinks = [];
 	function fetchData() {
 		fetch('https://api.github.com/repos/M4TY/zapisky/git/trees/main?recursive=1')
 			.then((response) => response.json())
@@ -17,7 +18,6 @@
 		data.forEach((element) => {
 			if (element.path.endsWith('.json') && element.path.includes('Kvízy')) {
 				let obj = element.path;
-				console.log(obj);
 				links = [...quizzes, obj];
 				populateQuizzes(links);
 			}
@@ -25,11 +25,14 @@
 	}
 	function populateQuizzes(links) {
 		links.forEach((element) => {
+			requestLinks = [
+				...requestLinks,
+				'https://raw.githubusercontent.com/M4TY/zapisky/main/' + element
+			];
 			fetch('https://raw.githubusercontent.com/M4TY/zapisky/main/' + element)
 				.then((response) => response.json())
 				.then((data) => {
 					quizzes = [...quizzes, data];
-					console.log(quizzes.length);
 				});
 		});
 	}
@@ -87,7 +90,7 @@
 	<div class="list-view">
 		{#each quizzes as quiz, i}
 			<div on:click={() => chooseQuiz(i)} class="logic-wrap">
-				<QuizCard title={quiz[0].theme} subject={quiz[0].subject} />
+				<QuizCard title={quiz[0].theme} subject={quiz[0].subject} link={requestLinks[i]} />
 			</div>
 		{/each}
 	</div>
