@@ -29,7 +29,6 @@
 				...requestLinks,
 				'https://raw.githubusercontent.com/M4TY/zapisky/main/' + element
 			];
-			console.log(requestLinks);
 			fetch('https://raw.githubusercontent.com/M4TY/zapisky/main/' + element)
 				.then((response) => response.json())
 				.then((data) => {
@@ -45,15 +44,18 @@
 	let answerLabel;
 	let currentLabel;
 	let answerShown = 'shown';
+	let questionNumberActive = 'questionNumber';
+	let numberOfQuestions = 0;
 
 	function chooseQuiz(i) {
-		console.log(i);
 		currentQuiz = i;
 		currentQuestion = 1;
 		answerShown = 'hidden';
 		currentLabel.innerHTML = quizzes[i][0].theme;
 		questionLabel.innerHTML = quizzes[i][currentQuestion].question;
 		answerLabel.innerHTML = quizzes[i][currentQuestion].answer;
+		numberOfQuestions = quizzes[i].length - 1;
+		questionNumberActive = 'questionNumberActive';
 	}
 	function next() {
 		if (currentQuestion == quizzes[currentQuiz].length - 1) return;
@@ -71,7 +73,6 @@
 	}
 	function random() {
 		currentQuestion = Math.floor(Math.random() * (quizzes[currentQuiz].length - 1)) + 1;
-		console.log(currentQuestion);
 		questionLabel.innerHTML = quizzes[currentQuiz][currentQuestion].question;
 		answerLabel.innerHTML = quizzes[currentQuiz][currentQuestion].answer;
 		answerShown = 'hidden';
@@ -103,6 +104,7 @@
 			<p class="answer{answerShown}" bind:this={answerLabel}>
 				Za stoprocentní správnost otázek neručíme
 			</p>
+			<p class={questionNumberActive}>{currentQuestion}/{numberOfQuestions}</p>
 		</div>
 		<div class="nav">
 			<button on:click={previous}>Předchozí</button>
@@ -159,6 +161,15 @@
 		align-items: center;
 		flex-direction: column;
 		gap: 20px;
+		position: relative;
+	}
+	.questionNumberActive {
+		position: absolute;
+		bottom: 5px;
+		right: 5px;
+	}
+	.questionNumber {
+		display: none;
 	}
 	.nav {
 		font-family: 'Montserrat', sans-serif;

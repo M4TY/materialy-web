@@ -22,7 +22,6 @@
 	}
 
 	function removeQuestion(index, objec) {
-		console.log(edited);
 		edited.splice(index, 1);
 		// objec.classList.add('animated');
 		edited = edited;

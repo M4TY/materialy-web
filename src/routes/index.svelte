@@ -3,7 +3,6 @@
 	import Content from '../components/Content.svelte';
 	import CookiePopup from '../components/CookiePopup.svelte';
 	import { cookies } from '../stores/store.js';
-	console.log($cookies);
 </script>
 
 <Navbar notesActive="active" />
