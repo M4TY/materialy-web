@@ -104,7 +104,7 @@
 			font-size: 10px;
 			margin: 10px;
 		}
-		button {
+		.card {
 			display: none;
 		}
 	}
