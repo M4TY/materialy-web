@@ -29,6 +29,16 @@
 	}
 
 	function addQuestion() {
+		if (edited.length === 0) {
+			let obj = {
+				subject: '',
+				theme: ''
+			};
+			edited.push(obj);
+			edited = edited;
+			finalText = '';
+			return;
+		}
 		let obj = {
 			question: '',
 			answer: ''
@@ -39,6 +49,13 @@
 	}
 
 	function exportQuiz() {
+		edited.forEach((element, index) => {
+			if (element.question === '' || element.answer === '') {
+				edited.splice(index, 1);
+				edited = edited;
+			}
+		});
+
 		var json = JSON.stringify(edited);
 		finalText = json;
 	}

@@ -2,6 +2,7 @@
 	import Navbar from '../components/Navbar.svelte';
 	import QuizCard from '../components/QuizCard.svelte';
 	import { onMount } from 'svelte';
+	import AddQuiz from '../components/AddQuiz.svelte';
 	let temp = [];
 	let quizzes = [];
 	let links = [];
@@ -95,7 +96,7 @@
 				<QuizCard title={quiz[0].theme} subject={quiz[0].subject} link={requestLinks[i]} />
 			</div>
 		{/each}
-		<QuizCard title="Přidat kvíz" subject="" />
+		<AddQuiz />
 	</div>
 
 	<div class="questionMenuWrapper">
