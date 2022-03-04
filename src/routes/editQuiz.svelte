@@ -48,7 +48,8 @@
 	{#each edited as item, i}
 		{#if i === 0}
 			<p class="subject">Editace kvízu</p>
-			<p class="theme"><u>{item.theme}</u></p>
+			<input bind:value={item.theme} placeholder="Téma" type="text" />
+			<input bind:value={item.subject} placeholder="Předmět" type="text" />
 		{:else}
 			<div class="wrapperWindows">
 				<div class="index">

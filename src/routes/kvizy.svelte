@@ -95,6 +95,7 @@
 				<QuizCard title={quiz[0].theme} subject={quiz[0].subject} link={requestLinks[i]} />
 			</div>
 		{/each}
+		<QuizCard title="Přidat kvíz" subject="" />
 	</div>
 
 	<div class="questionMenuWrapper">
