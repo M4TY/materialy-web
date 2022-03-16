@@ -1,5 +1,5 @@
 <script>
-	import Navbar from '../components/Navbar.svelte';
+    import Navbar from '../components/Navbar.svelte';
 	import { onMount } from 'svelte';
 	let link;
 	let pageData = '';

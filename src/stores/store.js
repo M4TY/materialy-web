@@ -5,3 +5,8 @@ export const cookies = writable((browser && localStorage.getItem('cookies')) || 
 cookies.subscribe((val) => {
 	if (browser) return (localStorage.cookies = val);
 });
+
+export const token = writable((browser && localStorage.getItem('token')) || "false");
+token.subscribe((val) => {
+	if (browser) return (localStorage.token = val);
+});

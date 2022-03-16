@@ -1,12 +1,20 @@
 <script>
 	export let notesActive = '';
 	export let quizzesActive = '';
+	export let profileActive = '';
+
+	function open() {
+		window.location.href = "/dashboard"
+	}
 </script>
 
 <nav>
 	<div class="buttons">
 		<a class={notesActive} href="/">Zápisky</a>
 		<a class={quizzesActive} href="/kvizy">Kvízy</a>
+	</div>
+	<div class="profile {profileActive}" on:click={open}>
+		<img src="https://icon-library.com/images/profile-icon-white/profile-icon-white-6.jpg" alt="">
 	</div>
 </nav>
 
@@ -19,6 +27,7 @@
 		justify-content: center;
 		align-items: center;
 		border-bottom: 2px solid rgb(25, 27, 27);
+		position: relative;
 	}
 
 	.buttons {
@@ -48,6 +57,26 @@
 		transition: all 0.25s;
 	}
 
+	.profile {
+		position: absolute;
+		right: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: 0.25s;
+	}
+	.profile active {
+		opacity: 0.6;
+	}
+
+	.profile:hover {
+		cursor: pointer;
+		opacity: 0.8;
+		transition: 0.25s;
+	}
+	.profile img {
+		height: 32px;
+	}
 	.buttons a:hover {
 		opacity: 0.7;
 		transition: all 0.25s;
