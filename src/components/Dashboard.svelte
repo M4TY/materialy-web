@@ -2,6 +2,7 @@
     import {token} from "../stores/store.js"
     import {onMount} from "svelte";
     import axios from "axios";
+    import EventCreation from "./Dashboard/EventCreation.svelte";
 
     let me = [];
     let loaded = false;
@@ -67,13 +68,7 @@
 
     {#if loaded}
     {#if me.group !== "USER"}
-        <div class="eventForm">
-            <h2 class="title">Přidání události</h2>
-            <input bind:value={eventName} type="text" placeholder="Název události">
-            <input bind:value={eventSubject} type="text" placeholder="Předmět události">
-            <input bind:value={eventDue} type="date" placeholder="Datum">
-            <button on:click={() => sendEvent() }>Odeslat</button>
-        </div>
+        <EventCreation/>
     {:else}
         <p>Vypadá to že nemáš práva na žádné akce. Pokud si myslíš, že se jedná o omyl, kontaktuj mě.</p>
     {/if}
@@ -124,35 +119,6 @@
 
     .wrapper input, button {
         font-family: 'Montserrat', sans-serif;
-    }
-
-    .eventForm {
-        border-radius: 1vmin;
-        background-color: #082032;
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        width: 90%;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        padding-left: 10px;
-        gap: 20px;
-        position: relative;
-    }
-
-    .eventForm input {
-        padding: 10px;
-        background-color: black;
-        border: none;
-        color: white;
-        border: 2px solid white;
-        border-radius: 1vmin;
-    }
-
-    .eventForm button {
-        padding: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
     }
 
 </style>
