@@ -4,6 +4,7 @@
     import axios from "axios";
 
     let me = [];
+    let loaded = false;
     let eventName, eventSubject, eventPriority, eventDue;
 
     function auth() {
@@ -16,6 +17,7 @@
             config
         ).then((data) => {
             me = data.data;
+            loaded = true;
         });
     }
 
@@ -55,6 +57,7 @@
         {/if}
     </div>
 
+    {#if loaded}
     {#if me.group !== "USER"}
         <div class="eventForm">
             <h2 class="title">Přidání události</h2>
@@ -64,6 +67,7 @@
             <button on:click={() => sendEvent() }>Odeslat</button>
         </div>
 
+    {/if}
     {/if}
 </div>
 

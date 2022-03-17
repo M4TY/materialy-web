@@ -4,17 +4,18 @@
 
     let email;
     let password;
-
-    export let registerScreen = false;
+    let name;
+    export let registerScreen;
 
     async function submit() {
-        if (email === undefined || password === undefined) {
+        if (email === undefined || password === undefined || name === undefined) {
             alert("You have to fill all of the fields")
             return;
         }
         axios.post("https://api-materialy.matyashimmer.eu/users/login", {
             email: email,
-            password: password
+            password: password,
+            name: name
         }).then((res) => {
 
             if (!res.data.token) {
@@ -29,16 +30,16 @@
 </script>
 
 <div class="wrapper">
-    <div class="loginForm">
+    <div class="registerForm">
+        <input bind:value={name} type="text" name="name" placeholder="Jméno">
         <input bind:value={email} type="email" placeholder="Email">
         <input bind:value={password} type="password" name="password" placeholder="Heslo">
-        <a on:click={() => registerScreen = true} class="register">Nemáte účet? <span>Zaregistrujte se</span></a>
-        <button name="" id="" value="Login" on:click={submit}>Přihlásit se</button>
+        <a on:click={() => registerScreen = false} class="register">Už máte účet? <span>Přihlásit se</span></a>
+        <button name="" id="" value="Login" on:click={submit}>Registrovat</button>
     </div>
 </div>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
     .wrapper {
         font-family: 'Montserrat', sans-serif;
         width: 100%;
@@ -46,8 +47,7 @@
         justify-content: center;
         padding-top: 20px;
     }
-
-    .loginForm {
+    .registerForm {
         background: #082032;
         display: flex;
         justify-items: center;
@@ -58,7 +58,7 @@
         width: 20%;
         border-radius: 1vmin;
     }
-    .loginForm input {
+    .registerForm input {
         font-family: 'Montserrat', sans-serif;
         color: white;
         background-color: black;
@@ -67,15 +67,15 @@
         padding: 10px;
         width: 80%;
     }
-    .loginForm a{
+    .registerForm a{
         color: white;
         user-select: none;
     }
-    .loginForm a span {
+    .registerForm a span {
         text-decoration: underline;
         cursor: pointer;
     }
-    .loginForm button {
+    .registerForm button {
         width: 40%;
         padding: 10px;
         background-color: #082032;
@@ -85,7 +85,7 @@
         transition: 0.25s;
     }
 
-    .loginForm button:hover {
+    .registerForm button:hover {
         opacity: 0.8;
         transition: 0.25s;
         cursor: pointer;
