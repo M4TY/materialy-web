@@ -1,6 +1,7 @@
 <script>
 	export let notesActive = '';
 	export let quizzesActive = '';
+	export let eventsActive = '';
 	export let profileActive = '';
 
 	function open() {
@@ -12,6 +13,7 @@
 	<div class="buttons">
 		<a class={notesActive} href="/">Zápisky</a>
 		<a class={quizzesActive} href="/kvizy">Kvízy</a>
+		<a class={eventsActive} href="/events">Úkoly</a>
 	</div>
 	<div class="profile {profileActive}" on:click={open}>
 		<img src="https://icon-library.com/images/profile-icon-white/profile-icon-white-6.jpg" alt="">

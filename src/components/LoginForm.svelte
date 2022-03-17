@@ -16,7 +16,7 @@
             password: password,
             name: name
         }).then((res) => {
-            console.log(res)
+
             if(!res.data.token) {
                 alert(res.data);
             } else {
