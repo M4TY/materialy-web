@@ -57,9 +57,9 @@
 
     {#if me.group !== "USER"}
         <div class="eventForm">
-            <h2 class="title">Přidání eventu</h2>
-            <input bind:value={eventName} type="text" placeholder="Nazev eventu">
-            <input bind:value={eventSubject} type="text" placeholder="Predmet eventu">
+            <h2 class="title">Přidání události</h2>
+            <input bind:value={eventName} type="text" placeholder="Název události">
+            <input bind:value={eventSubject} type="text" placeholder="Předmět události">
             <input bind:value={eventDue} type="date" placeholder="Datum">
             <button on:click={() => sendEvent() }>Odeslat</button>
         </div>
