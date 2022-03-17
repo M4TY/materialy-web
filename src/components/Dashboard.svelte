@@ -47,13 +47,21 @@
         });
     }
 
+    function logout() {
+        token.set("");
+        window.location.reload();
+    }
+
     onMount(auth)
 </script>
 
 <div class="wrapper">
     <div class="name">
         {#if me.name !== undefined}
-        <p>Vítej, {me.name}.</p>
+            <div class="wrap">
+                <p>Vítej, {me.name}.</p>
+                <button on:click={logout} class="logout">Odhlásit se</button>
+            </div>
         {/if}
     </div>
 
@@ -66,7 +74,8 @@
             <input bind:value={eventDue} type="date" placeholder="Datum">
             <button on:click={() => sendEvent() }>Odeslat</button>
         </div>
-
+    {:else}
+        <p>Vypadá to že nemáš práva na žádné akce. Pokud si myslíš, že se jedná o omyl, kontaktuj mě.</p>
     {/if}
     {/if}
 </div>
@@ -84,13 +93,32 @@
         align-items: center;
         gap: 30px;
     }
+    .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
 
+    .wrap button {
+        padding: 5px;
+        border: 2px solid white;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        transition: 0.25s
+    }
+
+    .wrap button:hover {
+        opacity: 0.8;
+        transition: 0.25s;
+        cursor: pointer;
+    }
     .name {
         width: 90%;
     }
 
     .name p {
-        margin-top: 20px;
         font-size: 24px;
     }
 

@@ -12,7 +12,7 @@
             alert("You have to fill all of the fields")
             return;
         }
-        axios.post("https://api-materialy.matyashimmer.eu/users/login", {
+        axios.post("https://api-materialy.matyashimmer.eu/users/register", {
             email: email,
             password: password,
             name: name
