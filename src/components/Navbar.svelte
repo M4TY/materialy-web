@@ -86,4 +86,19 @@
 	.active {
 		opacity: 0.6;
 	}
+
+	@media screen and (min-width: 320px) and (max-width: 800px) {
+		nav {
+			justify-content: left;
+		}
+		.buttons {
+			margin-left: 30px
+		}
+		.buttons a {;
+			font-size: 17px;
+		}
+		.profile img{
+			height: 24px;
+		}
+	}
 </style>

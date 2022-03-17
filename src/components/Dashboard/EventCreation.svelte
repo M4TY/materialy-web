@@ -41,7 +41,9 @@
 </div>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
     .eventForm {
+        font-family: 'Montserrat', sans-serif;
         border-radius: 1vmin;
         background-color: #082032;
         display: flex;
@@ -55,7 +57,7 @@
         position: relative;
     }
 
-    .eventForm input {
+    .eventForm input, button {
         padding: 10px;
         background-color: black;
         border: none;
@@ -65,8 +67,27 @@
     }
 
     .eventForm button {
+        font-family: 'Montserrat', sans-serif;
         padding: 10px;
         padding-left: 20px;
         padding-right: 20px;
+        background-color: #334756;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 800px) {
+        .eventForm {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+
+    @media screen and (min-width: 800px) and (max-width: 1400px) {
+        .eventForm {
+            gap: 7px;
+        }
+        .eventForm h2 {
+            font-size: 14px;
+        }
+    }
+
 </style>

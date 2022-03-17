@@ -3,6 +3,7 @@
     import {onMount} from "svelte";
     import axios from "axios";
     import EventCreation from "./Dashboard/EventCreation.svelte";
+    import UserEditor from "./Dashboard/UserEditor.svelte";
 
     let me = [];
     let loaded = false;
@@ -67,11 +68,14 @@
     </div>
 
     {#if loaded}
-    {#if me.group !== "USER"}
-        <EventCreation/>
-    {:else}
-        <p>Vypadá to že nemáš práva na žádné akce. Pokud si myslíš, že se jedná o omyl, kontaktuj mě.</p>
-    {/if}
+        {#if me.group !== "USER"}
+            <EventCreation/>
+        {:else}
+            <p>Vypadá to že nemáš práva na žádné akce. Pokud si myslíš, že se jedná o omyl, kontaktuj mě.</p>
+        {/if}
+        {#if me.group === "ADMIN"}
+            <UserEditor/>
+        {/if}
     {/if}
 </div>
 
@@ -88,6 +92,7 @@
         align-items: center;
         gap: 30px;
     }
+
     .wrap {
         display: flex;
         justify-content: space-between;
@@ -109,6 +114,7 @@
         transition: 0.25s;
         cursor: pointer;
     }
+
     .name {
         width: 90%;
     }

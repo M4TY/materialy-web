@@ -90,4 +90,16 @@
         transition: 0.25s;
         cursor: pointer;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 800px) {
+        .registerForm {
+            width: 80%;
+        }
+    }
+
+    @media screen and (min-width: 800px) and (max-width: 1400px) {
+        .registerForm {
+            width: 40%;
+        }
+    }
 </style>
