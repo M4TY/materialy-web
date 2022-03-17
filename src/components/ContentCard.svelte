@@ -29,6 +29,7 @@
         transition: 0.25s;
         box-shadow: 0 0 10px rgb(51, 51, 51);
         height: 200px;
+        margin-bottom: 20px;
     }
 
     .top {
