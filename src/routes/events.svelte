@@ -28,5 +28,6 @@
     }
     .cards {
         padding-top: 20px;
+        gap: 20px;
     }
 </style>
