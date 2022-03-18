@@ -39,7 +39,7 @@
             user,
             config
         ).then((res) => {
-            showAlert("User updated successfully")
+            showAlert("Uživatel byl úspěšně aktualizován")
         })
     }
 
@@ -52,7 +52,7 @@
             user,
             config
         ).then((res) => {
-            showAlert("User deleted successfully")
+            showAlert("Uživatel byl úspěšně odstraněn")
             fetchData();
         })
     }
@@ -128,6 +128,19 @@
         display: flex;
         flex-wrap: wrap;
         gap: 5px;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 800px) {
+        .userForm {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .user {
+            flex-direction: column;
+            gap: 10px;
+        }
     }
 
 </style>

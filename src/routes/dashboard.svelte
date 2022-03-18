@@ -26,7 +26,6 @@
                 config
             ).then((data) => {
                 if(data.data === "Not found") {
-                    console.log("zep")
                     loggedIn = false;
                 } else {
                     loggedIn = true;

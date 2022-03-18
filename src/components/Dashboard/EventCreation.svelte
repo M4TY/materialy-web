@@ -20,7 +20,7 @@
             headers: {Authorization: `Bearer ${$token}`}
         };
         if (eventName === undefined || eventSubject === undefined || eventDue === undefined) {
-            showAlert("You have to fill all the fields")
+            showAlert("Vyplňte prosím všechny položky")
             return;
         }
         const bodyParameters = {
@@ -34,7 +34,7 @@
             bodyParameters,
             config
         ).then((data) => {
-            showAlert("Successfully added event")
+            showAlert("Událost byla úspěšně přidána")
             eventName = "";
             eventSubject = "";
             eventDue = "";

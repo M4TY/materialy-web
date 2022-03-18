@@ -19,7 +19,7 @@
 
     async function submit() {
         if (email === undefined || password === undefined) {
-            showAlert("You have to fill all of the fields")
+            showAlert("Vyplňte prosím všechny položky")
             return;
         }
         axios.post("https://api-materialy.matyashimmer.eu/users/login", {

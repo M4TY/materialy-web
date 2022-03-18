@@ -11,6 +11,7 @@
 </div>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
     .content {
         position: fixed;
         z-index: 200;
@@ -22,20 +23,44 @@
         width: 20%;
         justify-content: center;
         align-items: center;
-        animation: dropDown 0.5s ease;
+        animation: dropDown 5s ease;
     }
 
     @keyframes dropDown {
-        from {
+        0% {
             transform: translateY(-300px);
         }
-        to {
+        15% {
             transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(-300px);
         }
     }
 
     .content p {
+        font-family: 'Montserrat', sans-serif;
+        color: white;
         margin-top: 20px;
         margin-bottom: 20px;
+        width: 80%;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 800px) {
+        .content {
+            width: 80%;
+            right: 10%;
+        }
+
+        .content p {
+            font-size: 12px;
+            text-align: center;
+        }
     }
 </style>
