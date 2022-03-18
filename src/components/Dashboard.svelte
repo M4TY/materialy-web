@@ -4,6 +4,7 @@
     import axios from "axios";
     import EventCreation from "./Dashboard/EventCreation.svelte";
     import UserEditor from "./Dashboard/UserEditor.svelte";
+    import EventEditor from "./Dashboard/EventEditor.svelte";
 
     let me = [];
     let loaded = false;
@@ -75,6 +76,7 @@
         {/if}
         {#if me.group === "ADMIN"}
             <UserEditor/>
+            <EventEditor/>
         {/if}
     {/if}
 </div>

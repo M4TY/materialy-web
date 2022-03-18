@@ -3,43 +3,43 @@
     import axios from "axios";
     import {onMount} from "svelte";
 
-    let users = [];
+    let events = [];
 
     function fetchData() {
         const config = {
             headers: {Authorization: `Bearer ${$token}`}
         };
         axios.get(
-            "https://api-materialy.matyashimmer.eu/users/all",
+            "https://api-materialy.matyashimmer.eu/events/all",
             config
         ).then((res) => {
             return res.data
         }).then((data) => {
-            users = data;
-            users = users;
+            events = data;
+            events = events;
         });
     }
 
-    function updateUser(user) {
+    function updateEvent(event) {
         const config = {
             headers: {Authorization: `Bearer ${$token}`}
         };
         axios.patch(
-            "https://api-materialy.matyashimmer.eu/users/updateUser",
-            user,
+            "https://api-materialy.matyashimmer.eu/events/updateEvent",
+            event,
             config
         ).then((res) => {
 
         })
     }
 
-    function deleteUser(user) {
+    function deleteEvent(event) {
         const config = {
             headers: {Authorization: `Bearer ${$token}`}
         };
         axios.post(
-            "https://api-materialy.matyashimmer.eu/users/deleteUser",
-            user,
+            "https://api-materialy.matyashimmer.eu/events/deleteEvent",
+            event,
             config
         ).then((res) => {
 
@@ -49,22 +49,16 @@
     onMount(fetchData)
 </script>
 
-<div class="userForm">
-    <p>Správa uživatel</p>
-    <div class="users">
-        {#each users as user, i}
-            <div class="user">
-                <input type="text" bind:value={user.name}>
-<!--                <input type="text" bind:value={user.group}>-->
-                <select bind:value={user.group}>
-                    <option>USER</option>
-                    <option>EDITOR</option>
-                    <option>EDITOR+</option>
-                    <option>ADMIN</option>
-                </select>
-                <input type="text" bind:value={user.email}>
-                <button on:click={() => updateUser(user, i)}>Aktualizovat</button>
-                <button on:click={() => deleteUser(user, i)}>Odstranit</button>
+<div class="eventForm">
+    <p>Správa událostí</p>
+    <div class="events">
+        {#each events as event, i}
+            <div class="event">
+                <input type="text" bind:value={event.name}>
+                <input type="text" bind:value={event.subject}>
+                <input type="text" bind:value={event.due}>
+                <button on:click={() => updateEvent(event, i)}>Aktualizovat</button>
+                <button on:click={() => deleteEvent(event, i)}>Odstranit</button>
             </div>
         {/each}
     </div>
@@ -73,7 +67,7 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 
-    .userForm {
+    .eventForm {
         font-family: 'Montserrat', sans-serif;
         border-radius: 1vmin;
         background-color: #082032;
@@ -87,7 +81,7 @@
         gap: 20px;
     }
 
-    .userForm input, select, button {
+    .eventForm input, select, button {
         padding: 10px;
         background-color: black;
         border: none;
@@ -96,7 +90,7 @@
         border-radius: 5px;
     }
 
-    .userForm button {
+    .eventForm button {
         font-family: 'Montserrat', sans-serif;
         padding: 10px;
         padding-left: 20px;
@@ -105,17 +99,18 @@
         transition: 0.25s;
     }
 
-    .userForm button:hover {
+    .eventForm button:hover {
         opacity: 0.8;
         transition: 0.25s;
         cursor: pointer;
     }
 
-    .user {
+    .event {
         margin-bottom: 20px;
         display: flex;
         flex-wrap: wrap;
         gap: 5px;
     }
+
 
 </style>

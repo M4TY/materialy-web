@@ -4,7 +4,7 @@
     import RegisterForm from "../components/RegisterForm.svelte";
     import Dashboard from "../components/Dashboard.svelte";
     import axios from "axios";
-    import { token } from '../stores/store.js';
+    import {token} from '../stores/store.js';
     import {onMount} from "svelte";
 
     let loggedIn = true;
@@ -14,11 +14,24 @@
     onMount(checkLogIn)
 
     function checkLogIn() {
-        if($token === "false") {
+        if ($token === "false") {
             loggedIn = false;
 
         } else {
-            loggedIn = true;
+            const config = {
+                headers: {Authorization: `Bearer ${$token}`}
+            };
+            axios.get(
+                'https://api-materialy.matyashimmer.eu/users/me',
+                config
+            ).then((data) => {
+                if(data.data === "Not found") {
+                    console.log("zep")
+                    loggedIn = false;
+                } else {
+                    loggedIn = true;
+                }
+            });
         }
 
         show = true
