@@ -72,6 +72,12 @@
         padding-left: 20px;
         padding-right: 20px;
         background-color: #334756;
+        transition: 0.25s;
+    }
+
+    .eventForm button:hover {
+        opacity: 0.8;
+        transition: 0.25s;
     }
 
     @media screen and (min-width: 320px) and (max-width: 800px) {

@@ -88,6 +88,12 @@
         padding-left: 20px;
         padding-right: 20px;
         background-color: #334756;
+        transition: 0.25s;
+    }
+
+    .userForm button:hover {
+        opacity: 0.8;
+        transition: 0.25s;
     }
 
     .user {
