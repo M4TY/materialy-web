@@ -94,6 +94,7 @@
     .userForm button:hover {
         opacity: 0.8;
         transition: 0.25s;
+        cursor: pointer;
     }
 
     .user {
