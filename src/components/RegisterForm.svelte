@@ -1,15 +1,25 @@
 <script>
     import axios from "axios";
     import {token} from "../stores/store.js";
+    import Alert from "./Alert.svelte";
 
     let email;
     let password;
     let name;
     export let registerScreen;
 
+    let alertContent;
+    let alertDisplay;
+    function showAlert(content) {
+        alertContent = content;
+        alertDisplay = "flex";
+
+        setTimeout(() => {  alertDisplay = "none"; }, 3000);
+    }
+
     async function submit() {
         if (email === undefined || password === undefined || name === undefined) {
-            alert("You have to fill all of the fields")
+            showAlert("You have to fill all of the fields")
             return;
         }
         axios.post("https://api-materialy.matyashimmer.eu/users/register", {
@@ -19,7 +29,7 @@
         }).then((res) => {
 
             if (!res.data.token) {
-                alert(res.data);
+                showAlert(res.data);
             } else {
                 token.set(res.data.token)
                 window.location.href = "/dashboard"
@@ -29,6 +39,7 @@
     }
 </script>
 
+<Alert content={alertContent} display={alertDisplay}/>
 <div class="wrapper">
     <div class="registerForm">
         <input bind:value={name} type="text" name="name" placeholder="Jméno">

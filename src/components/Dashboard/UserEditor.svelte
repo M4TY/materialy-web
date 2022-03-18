@@ -2,8 +2,18 @@
     import {token} from "../../stores/store.js";
     import axios from "axios";
     import {onMount} from "svelte";
+    import Alert from "../Alert.svelte";
 
     let users = [];
+
+    let alertContent;
+    let alertDisplay;
+    function showAlert(content) {
+        alertContent = content;
+        alertDisplay = "flex";
+
+        setTimeout(() => {  alertDisplay = "none"; }, 3000);
+    }
 
     function fetchData() {
         const config = {
@@ -29,7 +39,7 @@
             user,
             config
         ).then((res) => {
-
+            showAlert("User updated successfully")
         })
     }
 
@@ -42,13 +52,15 @@
             user,
             config
         ).then((res) => {
-
+            showAlert("User deleted successfully")
+            fetchData();
         })
     }
 
     onMount(fetchData)
 </script>
 
+<Alert content={alertContent} display={alertDisplay}/>
 <div class="userForm">
     <p>Správa uživatel</p>
     <div class="users">

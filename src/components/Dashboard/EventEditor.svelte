@@ -2,8 +2,18 @@
     import {token} from "../../stores/store.js";
     import axios from "axios";
     import {onMount} from "svelte";
+    import Alert from "../Alert.svelte";
 
     let events = [];
+
+    let alertContent;
+    let alertDisplay;
+    function showAlert(content) {
+        alertContent = content;
+        alertDisplay = "flex";
+
+        setTimeout(() => {  alertDisplay = "none"; }, 3000);
+    }
 
     function fetchData() {
         const config = {
@@ -29,7 +39,7 @@
             event,
             config
         ).then((res) => {
-
+            showAlert("Event updated successfully")
         })
     }
 
@@ -42,13 +52,14 @@
             event,
             config
         ).then((res) => {
-
+            showAlert("Event deleted successfully")
         })
     }
 
     onMount(fetchData)
 </script>
 
+<Alert content={alertContent} display={alertDisplay}/>
 <div class="eventForm">
     <p>Správa událostí</p>
     <div class="events">

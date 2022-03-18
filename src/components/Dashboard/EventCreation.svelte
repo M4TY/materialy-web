@@ -1,16 +1,26 @@
 <script>
     import {token} from "../../stores/store.js";
     import axios from "axios";
+    import Alert from "../Alert.svelte";
 
     let loaded = false;
     let eventName, eventSubject, eventPriority, eventDue;
+
+    let alertContent;
+    let alertDisplay;
+    function showAlert(content) {
+        alertContent = content;
+        alertDisplay = "flex";
+
+        setTimeout(() => {  alertDisplay = "none"; }, 3000);
+    }
 
     function sendEvent() {
         const config = {
             headers: {Authorization: `Bearer ${$token}`}
         };
         if (eventName === undefined || eventSubject === undefined || eventDue === undefined) {
-            alert("You have to fill all of the fields")
+            showAlert("You have to fill all the fields")
             return;
         }
         const bodyParameters = {
@@ -24,7 +34,7 @@
             bodyParameters,
             config
         ).then((data) => {
-            alert("Successfully added event")
+            showAlert("Successfully added event")
             eventName = "";
             eventSubject = "";
             eventDue = "";
@@ -32,6 +42,7 @@
     }
 </script>
 
+<Alert content={alertContent} display={alertDisplay}/>
 <div class="eventForm">
     <h2 class="title">Přidání události</h2>
     <input bind:value={eventName} type="text" placeholder="Název události">
