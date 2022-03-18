@@ -12,12 +12,10 @@
 
     function filterData(data) {
         data.forEach(element => {
-            let d = new Date(element.due);
-            d.setDate(d.getDate() - 1)
             let newObject = {
                 name: element.name,
                 subject: element.subject,
-                due: d.toLocaleDateString()
+                due: (new Date(element.due)).toLocaleDateString()
             }
 
             activeEvents.push(newObject);
