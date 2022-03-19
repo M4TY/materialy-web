@@ -23,6 +23,11 @@
             showAlert("Vyplňte prosím všechny položky")
             return;
         }
+
+        if(password.length < 8) {
+            showAlert("Heslo by mělo obsahovat minimálně osm znaků")
+            return;
+        }
         axios.post("https://api-materialy.matyashimmer.eu/users/register", {
             email: email,
             password: password,
