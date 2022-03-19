@@ -8,6 +8,7 @@
 
     let alertContent;
     let alertDisplay;
+    let active = true;
     function showAlert(content) {
         alertContent = content;
         alertDisplay = "flex";
@@ -16,11 +17,17 @@
     }
 
     function fetchData() {
+        let url;
+        if(active) {
+            url = "https://api-materialy.matyashimmer.eu/events/active";
+        }  else {
+            url = "https://api-materialy.matyashimmer.eu/events/all"
+        }
         const config = {
             headers: {Authorization: `Bearer ${$token}`}
         };
         axios.get(
-            "https://api-materialy.matyashimmer.eu/events/all",
+            url,
             config
         ).then((res) => {
             return res.data
@@ -64,6 +71,7 @@
 <Alert content={alertContent} display={alertDisplay}/>
 <div class="eventForm">
     <p>Správa událostí</p>
+    <input type="checkbox" id="activeCheck" bind:checked={active} on:change={() => fetchData()}>
     <div class="events">
         {#each events as event, i}
             <div class="event">
@@ -119,10 +127,17 @@
     }
 
     .event {
-        margin-bottom: 20px;
         display: flex;
         flex-wrap: wrap;
         gap: 5px;
+    }
+
+    .events {
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     @media screen and (min-width: 320px) and (max-width: 800px) {

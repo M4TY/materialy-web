@@ -74,7 +74,7 @@
         border: none;
         color: white;
         border: 2px solid white;
-        border-radius: 1vmin;
+        border-radius: 5px;
     }
 
     .eventForm button {

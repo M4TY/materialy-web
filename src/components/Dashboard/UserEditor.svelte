@@ -133,8 +133,14 @@
         cursor: pointer;
     }
 
+    .users {
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     .user {
-        margin-bottom: 20px;
         display: flex;
         flex-wrap: wrap;
         gap: 5px;

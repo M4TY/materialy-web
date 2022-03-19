@@ -89,10 +89,17 @@
     }
 
     .event {
-        margin-bottom: 20px;
         display: flex;
         flex-wrap: wrap;
         gap: 5px;
+    }
+
+    .events {
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     @media screen and (min-width: 320px) and (max-width: 800px) {
