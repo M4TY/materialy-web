@@ -5,6 +5,7 @@
     import EventCreation from "./Dashboard/EventCreation.svelte";
     import UserEditor from "./Dashboard/UserEditor.svelte";
     import EventEditor from "./Dashboard/EventEditor.svelte";
+    import CodeEditor from "./Dashboard/CodeEditor.svelte";
 
     let me = [];
     let loaded = false;
@@ -77,6 +78,7 @@
         {#if me.group === "ADMIN"}
             <UserEditor/>
             <EventEditor/>
+            <CodeEditor/>
         {/if}
     {/if}
 </div>

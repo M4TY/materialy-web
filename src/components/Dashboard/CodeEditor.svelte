@@ -4,7 +4,7 @@
     import {onMount} from "svelte";
     import Alert from "../Alert.svelte";
 
-    let events = [];
+    let codes = [];
 
     let alertContent;
     let alertDisplay;
@@ -20,42 +20,14 @@
             headers: {Authorization: `Bearer ${$token}`}
         };
         axios.get(
-            "https://api-materialy.matyashimmer.eu/events/all",
+            "https://api-materialy.matyashimmer.eu/codes/all",
             config
         ).then((res) => {
             return res.data
         }).then((data) => {
-            events = data;
-            events = events;
+            codes = data;
+            codes = codes;
         });
-    }
-
-    function updateEvent(event) {
-        const config = {
-            headers: {Authorization: `Bearer ${$token}`}
-        };
-        axios.patch(
-            "https://api-materialy.matyashimmer.eu/events/updateEvent",
-            event,
-            config
-        ).then((res) => {
-            showAlert("Událost byla úspěšně přidána")
-            events = events;
-        })
-    }
-
-    function deleteEvent(event) {
-        const config = {
-            headers: {Authorization: `Bearer ${$token}`}
-        };
-        axios.post(
-            "https://api-materialy.matyashimmer.eu/events/deleteEvent",
-            event,
-            config
-        ).then((res) => {
-            showAlert("Událost byla úspěšně odebrána")
-            events = events;
-        })
     }
 
     onMount(fetchData)
@@ -63,15 +35,13 @@
 
 <Alert content={alertContent} display={alertDisplay}/>
 <div class="eventForm">
-    <p>Správa událostí</p>
+    <p>Správa verifikačních kódů</p>
     <div class="events">
-        {#each events as event, i}
+        {#each codes as code, i}
             <div class="event">
-                <input type="text" bind:value={event.name}>
-                <input type="text" bind:value={event.subject}>
-                <input type="text" bind:value={event.due}>
-                <button on:click={() => updateEvent(event, i)}>Aktualizovat</button>
-                <button on:click={() => deleteEvent(event, i)}>Odstranit</button>
+                <input type="text" bind:value={code.code} readonly>
+                <input type="text" bind:value={code.email} readonly>
+                <input type="text" bind:value={code.expiration} readonly>
             </div>
         {/each}
     </div>
