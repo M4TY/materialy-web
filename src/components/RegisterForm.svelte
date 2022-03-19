@@ -2,6 +2,7 @@
     import axios from "axios";
     import {token} from "../stores/store.js";
     import Alert from "./Alert.svelte";
+    import {onMount} from "svelte";
 
     let email;
     let password;
@@ -40,6 +41,20 @@
         })
 
     }
+
+    let passwordInput;
+    let sendButton;
+
+    function mount() {
+        passwordInput.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                sendButton.click();
+            }
+        });
+    }
+
+    onMount(mount);
 </script>
 
 <Alert content={alertContent} display={alertDisplay}/>
@@ -47,9 +62,9 @@
     <div class="registerForm">
         <input bind:value={name} type="text" name="name" placeholder="Jméno">
         <input bind:value={email} type="email" placeholder="Email">
-        <input bind:value={password} type="password" name="password" placeholder="Heslo">
+        <input bind:this={passwordInput} bind:value={password} type="password" name="password" placeholder="Heslo">
         <a on:click={() => registerScreen = false} class="register">Už máte účet? <span>Přihlásit se</span></a>
-        <button name="" id="" value="Login" on:click={submit}>Registrovat</button>
+        <button bind:this={sendButton} name="" id="" value="Login" on:click={submit}>Registrovat</button>
     </div>
 </div>
 
