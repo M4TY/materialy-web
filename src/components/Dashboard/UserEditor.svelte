@@ -27,6 +27,11 @@
         }).then((data) => {
             users = data;
             users = users;
+
+            users.forEach(element => {
+                element._2fa = element._2fa.toString();
+            })
+
         });
     }
 
@@ -73,6 +78,11 @@
                     <option>EDITOR</option>
                     <option>EDITOR+</option>
                     <option>ADMIN</option>
+                </select>
+<!--                <input type="text" bind:value={user._2fa}>-->
+                <select bind:value={user._2fa}>
+                    <option value="true">Use 2FA</option>
+                    <option value="false">Don't use 2FA</option>
                 </select>
                 <input type="text" bind:value={user.email}>
                 <button on:click={() => updateUser(user, i)}>Aktualizovat</button>

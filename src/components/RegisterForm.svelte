@@ -4,10 +4,12 @@
     import Alert from "./Alert.svelte";
     import {onMount} from "svelte";
 
-    let email;
+    export let email;
     let password;
     let name;
+
     export let registerScreen;
+    export let code = false;
 
     let alertContent;
     let alertDisplay;
@@ -35,10 +37,10 @@
         }).then((res) => {
 
             if (!res.data.token) {
-                if(res.status === 201) {
-                    setInterval(() => registerScreen = false, 3000);
+                showAlert(res.data)
+                if(res.data === "Check your email for a verification code") {
+                    code = true;
                 }
-                showAlert(res.data);
             } else {
                 token.set(res.data.token)
                 window.location.href = "/dashboard"

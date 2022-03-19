@@ -5,12 +5,11 @@
     import {onMount} from "svelte";
 
     export let email;
-    let password;
-    let passwordInput;
+    let code;
+    let codeInput;
     let sendButton;
 
     export let registerScreen = false;
-    export let code = false;
 
     let alertContent;
     let alertDisplay;
@@ -22,7 +21,7 @@
     }
 
     function mount() {
-        passwordInput.addEventListener("keyup", function(event) {
+        codeInput.addEventListener("keyup", function(event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
                 sendButton.click();
@@ -32,42 +31,32 @@
 
 
     async function submit() {
-        if (email === undefined || password === undefined) {
+        if (code === undefined) {
             showAlert("Vyplňte prosím všechny položky")
             return;
         }
-        axios.post("https://api-materialy.matyashimmer.eu/users/login", {
+        axios.post("https://api-materialy.matyashimmer.eu/users/2fa", {
             email: email,
-            password: password
+            code: code
         }).then((res) => {
 
             if (!res.data.token) {
                 showAlert(res.data);
-                if(res.data === "Check your email for a verification code") {
-                    code = true;
-                }
             } else {
                 token.set(res.data.token)
                 window.location.href = "/dashboard"
             }
         })
-
     }
 
-    function toggle() {
-        registerScreen = true;
-        code = false;
-    }
     onMount(mount);
 </script>
 
 <Alert content={alertContent} display={alertDisplay}/>
 <div class="wrapper">
     <div class="loginForm">
-        <input bind:value={email} type="email" placeholder="Email">
-        <input bind:this={passwordInput} bind:value={password} type="password" name="password" placeholder="Heslo">
-        <a on:click={() => toggle()} class="register">Nemáte účet? <span>Zaregistrujte se</span></a>
-        <button bind:this={sendButton} name="" id="" value="Login" on:click={submit}>Přihlásit se</button>
+        <input bind:this={codeInput} bind:value={code} type="number" placeholder="Verifikační kód">
+        <button bind:this={sendButton} name="" id="" value="Login" on:click={submit}>Ověřit</button>
     </div>
 </div>
 
