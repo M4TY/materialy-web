@@ -29,6 +29,7 @@
             due: eventDue
         };
 
+        console.log(eventDue);
         axios.post(
             "https://api-materialy.matyashimmer.eu/events/new",
             bodyParameters,

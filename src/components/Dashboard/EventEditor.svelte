@@ -47,7 +47,7 @@
             config
         ).then((res) => {
             showAlert("Událost byla úspěšně přidána")
-            events = events;
+            fetchData()
         })
     }
 
@@ -61,7 +61,7 @@
             config
         ).then((res) => {
             showAlert("Událost byla úspěšně odebrána")
-            events = events;
+            fetchData()
         })
     }
 

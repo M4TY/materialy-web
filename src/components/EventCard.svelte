@@ -2,6 +2,7 @@
     export let title;
     export let subject;
     export let due;
+    export let inDays = "za 3 dny"
 
 </script>
 
@@ -11,7 +12,7 @@
     </section>
     <section class="bottom">
         <p>{subject}</p>
-        <p>{due}</p>
+        <p>{due} <span id="days">({inDays})</span></p>
     </section>
 </div>
 
@@ -30,6 +31,10 @@
         box-shadow: 0 0 10px rgb(51, 51, 51);
         height: 200px;
         margin-bottom: 20px;
+    }
+
+    #days {
+        font-size: 10px;
     }
 
     .top {
