@@ -16,7 +16,7 @@
             const firstDate = new Date();
             const secondDate = new Date(element.due);
 
-            const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+            const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay)) + 1;
 
             let inDays;
             if(diffDays === 0) {
