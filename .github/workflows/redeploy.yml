@@ -1,4 +1,4 @@
-name: remote ssh command
+name: Redeploy on push
 on: [push]
 on:  
   workflow_dispatch:
