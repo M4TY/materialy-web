@@ -24,6 +24,6 @@
 <style>
 	iframe {
 		width: 100vw;
-		height: 100vh;
+		height: 92vh;
 	}
 </style>
