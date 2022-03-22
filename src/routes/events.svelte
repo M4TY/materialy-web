@@ -13,10 +13,13 @@
     function filterData(data) {
         data.forEach(element => {
             const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-            const firstDate = new Date();
+            const firstDate = new Date().setHours(0);
             const secondDate = new Date(element.due);
+            const diffDays = Math.round((secondDate-firstDate)/(1000*60*60*24));
 
-            const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+            console.log(firstDate)
+            console.log(secondDate)
+            console.log(diffDays)
 
             let inDays;
             if(diffDays === 0) {
