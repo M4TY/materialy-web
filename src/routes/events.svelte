@@ -25,7 +25,7 @@
             if(diffDays === 0) {
                 inDays = "dnes";
             } else if(diffDays === 1) {
-                inDays = "za " + diffDays + " den";
+                inDays = "zítra";
             } else if(diffDays > 1 && diffDays < 5) {
                 inDays = "za " + diffDays + " dny";
             } else {
