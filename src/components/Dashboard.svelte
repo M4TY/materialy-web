@@ -21,6 +21,9 @@
             config
         ).then((data) => {
             me = data.data;
+            if(me === "jwt expired") {
+                token.set("false");
+            }
             loaded = true;
         });
     }
@@ -70,15 +73,18 @@
     </div>
 
     {#if loaded}
-        {#if me.group !== "USER"}
+        {#if me.group === "EDITOR"}
             <EventCreation/>
-        {:else}
-            <p>Vypadá to že nemáš práva na žádné akce. Pokud si myslíš, že se jedná o omyl, kontaktuj mě.</p>
-        {/if}
-        {#if me.group === "ADMIN"}
+        {:else if me.group === "EDITOR+"}
+            <EventCreation/>
+            <EventEditor/>
+        {:else if me.group === "ADMIN"}
+            <EventCreation/>
             <UserEditor/>
             <EventEditor/>
             <CodeEditor/>
+        {:else}
+            <p>Vypadá to že nemáš práva na žádné akce. Pokud si myslíš, že se jedná o omyl, kontaktuj mě.</p>
         {/if}
     {/if}
 </div>
