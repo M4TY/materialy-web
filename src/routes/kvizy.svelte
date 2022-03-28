@@ -62,6 +62,20 @@
         });
     }
 
+    function handleClick(event) {
+        let key = event.key;
+
+        if(key === "ArrowRight") {
+            next();
+        } else if(key === "ArrowLeft") {
+            previous();
+        } else if(key === "r") {
+            random();
+        } else if(key === "t") {
+            toggleAnswer();
+        }
+    }
+
     onMount(fetchData);
     //   question
     let currentQuestion = 1;
@@ -115,6 +129,8 @@
         }
     }
 </script>
+
+<svelte:window on:keydown={handleClick}/>
 
 <Navbar quizzesActive="active"/>
 
