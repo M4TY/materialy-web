@@ -143,7 +143,7 @@
         {/each}
         {#if loaded}
 
-            {#if me.group !== "EDITOR" && me.group !== "USER"}
+            {#if me.group !== "EDITOR" && me.group !== "USER" && me.group}
                 <AddQuiz/>
             {/if}
         {/if}

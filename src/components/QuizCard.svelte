@@ -34,7 +34,7 @@
 
 <div class="card">
     {#if loaded}
-        {#if me.group !== "USER"}
+        {#if me.group !== "USER" && me.group !== "EDITOR" && me.group}
             <button on:click={onClick}>Edit</button>
         {/if}
     {/if}
