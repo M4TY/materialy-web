@@ -128,9 +128,6 @@
                 break;
             }
         }
-        for(let i = 0; i < arrayCopy.length; i++){
-            console.log(arrayCopy[i]);
-        }
         length = arrayCopy.length - 1;
     }
 
@@ -152,9 +149,7 @@
 
     function random() {
         console.clear();
-        console.log(length);
         currentQuestion = arrayCopy[length];
-        console.log(currentQuestion);
         if(length > 0){
             length --;
         }
