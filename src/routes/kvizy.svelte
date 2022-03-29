@@ -14,6 +14,11 @@
     let me = [];
     let loaded = false;
 
+    let previousItem = [];
+    let arrayCopy = [];
+    let length = 0;
+    let number = 0;
+
     function auth() {
         const config = {
             headers: {Authorization: `Bearer ${$token}`}
@@ -96,6 +101,34 @@
         answerLabel.innerHTML = quizzes[i][currentQuestion].answer;
         numberOfQuestions = quizzes[i].length - 1;
         questionNumberActive = 'questionNumberActive';
+        
+        randomQuestions();
+    } 
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function randomQuestions(){
+        previousItem = [];
+        arrayCopy = [];
+        for(let i = 0; i < numberOfQuestions - 1; i++) {
+            previousItem.push(i);
+        }
+        for(let i = 0; i < 1000; i++){
+            number = getRandomInt(0, previousItem.length)
+            if(arrayCopy.includes(number)){
+                
+            }
+            else{
+                arrayCopy.push(number);
+            }
+            if(arrayCopy === previousItem){
+                break;
+            }
+        }
+        length = arrayCopy.length - 1;
     }
 
     function next() {
@@ -115,12 +148,21 @@
     }
 
     function random() {
-        currentQuestion = Math.floor(Math.random() * (quizzes[currentQuiz].length - 1)) + 1;
+        console.clear();
+        currentQuestion = arrayCopy[length];
+        if(length > 0){
+            length --;
+        }
+        else if(length == 0){
+            randomQuestions();
+        }
+        if(currentQuestion == 0){
+            currentQuestion = arrayCopy.length;
+        }
         questionLabel.innerHTML = quizzes[currentQuiz][currentQuestion].question;
         answerLabel.innerHTML = quizzes[currentQuiz][currentQuestion].answer;
         answerShown = 'hidden';
-    }
-
+    }    
     function toggleAnswer() {
         if (answerShown === 'hidden') {
             answerShown = 'shown';
