@@ -14,33 +14,16 @@
 	function fetchData() {
 		fetch(link)
 			.then((response) => response.text())
-			.then((data) => (value = data));
+			.then((data) => (pageData = data));
 	}
-
-    import 'bytemd/dist/index.css'
-    import { Editor, Viewer } from 'bytemd'
-    import gfm from '@bytemd/plugin-gfm'
-    import pluginmathssr from '@bytemd/plugin-math-ssr'
-    import frontmatter from '@bytemd/plugin-frontmatter'
-    import 'bytemd/dist/index.css'
-
-    let value;
-    let plugins = [gfm(), frontmatter(), pluginmathssr()]
 </script>
 
 <Navbar />
-<div class="container">
-    <div class="markdown-body">
-        <Viewer {value} {plugins}/>
-    </div>
-</div>
+<iframe srcdoc="<html>{pageData}</html>" />
 
 <style>
 	iframe {
 		width: 100vw;
 		height: 92vh;
 	}
-    .container {
-        width: 100vw;
-    }
 </style>
