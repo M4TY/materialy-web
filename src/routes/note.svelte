@@ -29,7 +29,7 @@
     let plugins = [gfm(), frontmatter(), pluginmathssr()]
 </script>
 <Navbar/>
-<div className="container">
+<div class="container">
     <div className="markdown-body">
         <Viewer {value} {plugins}/>
     </div>
@@ -37,6 +37,7 @@
 
 <style>
     .container {
-        width: 100vw;
+        display: flex;
+        justify-content: center;
     }
 </style>
