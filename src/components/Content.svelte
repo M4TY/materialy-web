@@ -19,7 +19,13 @@
 	onMount(fetchData);
 	function filterData(data) {
 		data.forEach((element) => {
-			if (element.path.endsWith('.html')) {
+			if (element.path.endsWith('.md')) {
+				if(element.path.includes("README.md")) {
+					return;
+				}
+				if(element.path.includes("todo.md")) {
+					return;
+				}
 				let splitted = element.path.split('/');
 				let tempSubj = splitted[0];
 				let tempName = splitted[1].split('.')[0];
