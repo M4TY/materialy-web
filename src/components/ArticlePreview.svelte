@@ -40,9 +40,8 @@
 		height: 250px;
 	}
 	.card:hover {
-		transform: scale(1.01);
+		box-shadow: 0 0 25px rgb(51, 51, 51);
 		transition: 0.25s;
-		cursor: pointer;
 	}
 
 	.top {
@@ -102,6 +101,7 @@
 		border: none;
 		font-size: 16px;
 		color: rgb(185, 185, 185);
+		cursor: pointer;
 	}
 	@media screen and (min-width: 320px) and (max-width: 800px) {
 		.card {

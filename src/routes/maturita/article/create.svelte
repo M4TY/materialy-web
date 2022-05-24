@@ -1,41 +1,42 @@
 <script>
-    import {page} from '$app/stores';
     import axios from 'axios';
     import Navbar from "../../../components/Navbar.svelte";
+    import {token} from "../../../stores/store.js";
     import {onMount} from "svelte";
 
-    const slug = $page.params.slug;
-    const url = "https://api-materialy.matyashimmer.eu/articles/specific/" + slug;
-    ///
-    let article = [];
-    let fetched = false;
+    let me = [];
+    function auth() {
+        const config = {
+            headers: {Authorization: `Bearer ${$token}`}
+        };
 
-    onMount(async () => {
-        const response = await axios.get(url);
-        article = response.data[0]
-        fetched = true;
-    });
+        axios.get(
+            'https://api-materialy.matyashimmer.eu/users/me',
+            config
+        ).then((data) => {
+            me = data.data;
+        });
+    }
 
+    onMount(auth)
 
 </script>
 <Navbar/>
-{#if fetched}
     <main>
         <div class="content-wrapper">
             <section class="info">
-                <h1>{article.title}</h1>
-                <p>{article.originalAuthor}</p>
+                <input placeholder="Nadpis">
+                <input placeholder="Autor díla">
             </section>
             <hr>
-            <pre class="contentText">{article.content}</pre>
+            <textarea placeholder="Text článku"></textarea>
             <hr>
             <section class="info">
-                <p>{article.author}</p>
-                <p>{new Date(article.publishedAt).toLocaleDateString()}</p>
+                <input readonly bind:value={me.name}>
+                <input readonly value={new Date().toLocaleString("cs-cz")}>
             </section>
         </div>
     </main>
-{/if}
 
 
 <style lang="scss">
