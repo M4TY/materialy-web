@@ -94,10 +94,10 @@
 			justify-content: left;
 		}
 		.buttons {
-			margin-left: 30px
+			margin-left: 50px
 		}
 		.buttons a {;
-			font-size: 17px;
+			font-size: 14px;
 		}
 		.profile img{
 			height: 24px;

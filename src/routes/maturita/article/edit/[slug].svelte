@@ -192,4 +192,22 @@
 
     }
 
+    @media screen and (min-width: 320px) and (max-width: 800px) {
+        .content-wrapper {
+            width: 90%;
+        }
+
+        .content-wrapper input, select, button, textarea {
+            padding: 5px;
+            background-color: black;
+            border: none;
+            color: white;
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+        .contain {
+            width: 90%;
+        }
+    }
+
 </style>
