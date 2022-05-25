@@ -10,3 +10,8 @@ export const token = writable((browser && localStorage.getItem('token')) || "fal
 token.subscribe((val) => {
 	if (browser) return (localStorage.token = val);
 });
+
+export const versionSeen = writable((browser && localStorage.getItem('versionSeen')) || "false");
+versionSeen.subscribe((val) => {
+	if (browser) return (localStorage.versionSeen = val);
+});
