@@ -102,6 +102,11 @@
 		font-size: 16px;
 		color: rgb(185, 185, 185);
 		cursor: pointer;
+		transition: 0.25s;
+	}
+
+	.bottom button:hover {
+		color: white;
 	}
 	@media screen and (min-width: 320px) and (max-width: 800px) {
 		.card {

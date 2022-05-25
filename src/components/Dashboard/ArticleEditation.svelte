@@ -2,9 +2,9 @@
     import {token} from "../../stores/store.js";
     import axios from "axios";
     import Alert from "../Alert.svelte";
+    import {onMount} from "svelte";
 
     let loaded = false;
-    let eventName, eventSubject, eventPriority, eventDue;
 
     let alertContent;
     let alertDisplay;
@@ -14,14 +14,41 @@
 
         setTimeout(() => {  alertDisplay = "none"; }, 3000);
     }
+
+    let me = [];
+    function auth() {
+        const config = {
+            headers: {Authorization: `Bearer ${$token}`}
+        };
+
+        axios.get(
+            'https://api-materialy.matyashimmer.eu/users/me',
+            config
+        ).then((data) => {
+            me = data.data;
+            loadMyArticles();
+        });
+    }
+
+    let myArticles = [];
+    async function loadMyArticles() {
+        let response = await axios.get("https://api-materialy.matyashimmer.eu/articles/all");
+        let articles = response.data;
+        myArticles = articles.filter(article => article.author === me.name);
+        console.log(myArticles);
+    }
+
+    onMount(auth);
 </script>
 
 <Alert content={alertContent} display={alertDisplay}/>
 
 <div class="articleForm">
-    <h2 class="title">Přidání maturitního shrnutí</h2>
-    <button on:click={() => window.location.href = "/maturita/article/create"}>Pro přidání shrnutí díla přejdi sem</button>
+    <h2 class="title">Upráva shrnutí</h2>
 
+    {#each myArticles as article}
+        <button on:click={() => window.location.href = `/maturita/article/edit/${article.slug}`}>{article.title}</button>
+    {/each}
 </div>
 
 <style>

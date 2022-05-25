@@ -10,8 +10,6 @@
     async function getArticles() {
         const response = await axios.get(endpoint);
         data = response.data;
-
-        console.log(data[0])
     }
 
     onMount(getArticles)
@@ -32,5 +30,6 @@
         gap: 20px;
         flex-direction: column;
         align-items: center;
+        padding-bottom: 40px;
     }
 </style>

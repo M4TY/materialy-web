@@ -4,6 +4,19 @@
     import {token} from "../../../stores/store.js";
     import {onMount} from "svelte";
 
+    import Alert from "../../../components/Alert.svelte";
+
+    let alertContent;
+    let alertDisplay;
+    let active = true;
+    function showAlert(content) {
+        alertContent = content;
+        alertDisplay = "flex";
+
+        setTimeout(() => {  alertDisplay = "none"; }, 3000);
+    }
+
+
     let me = [];
     function auth() {
         const config = {
@@ -18,28 +31,61 @@
         });
     }
 
+
+    let title;
+    let content;
+    let originalAuthor;
+
+    async function createArticle() {
+        const config = {
+            headers: {Authorization: `Bearer ${$token}`}
+        };
+
+        let response = await axios.post(
+            'https://api-materialy.matyashimmer.eu/articles/new',
+            {
+                title: title,
+                content: content,
+                originalAuthor: originalAuthor,
+                author: me.name
+            },
+            config
+        )
+
+        if(response.status === 201) {
+            showAlert('Článek byl úspěšně vytvořen');
+            setTimeout(() => {
+                window.location.href = "/maturita"
+            }, 3000);
+        }
+    }
+
     onMount(auth)
 
 </script>
+<Alert content={alertContent} display={alertDisplay}/>
 <Navbar/>
     <main>
         <div class="content-wrapper">
             <section class="info">
-                <input placeholder="Nadpis">
-                <input placeholder="Autor díla">
+                <input bind:value={title} placeholder="Nadpis">
+                <input bind:value={originalAuthor} placeholder="Autor díla">
             </section>
             <hr>
-            <textarea placeholder="Text článku"></textarea>
+            <textarea bind:value={content} placeholder="Text článku"></textarea>
             <hr>
             <section class="info">
                 <input readonly bind:value={me.name}>
                 <input readonly value={new Date().toLocaleString("cs-cz")}>
             </section>
         </div>
+        <section class="contain">
+            <button on:click={createArticle}>Odeslat</button>
+        </section>
     </main>
 
 
-<style lang="scss">
+<style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 
   main {
@@ -48,6 +94,15 @@
     justify-content: center;
     align-items: center;
     color: white;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contain {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   .content-wrapper {
@@ -81,6 +136,24 @@
     height: 1px;
     background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
 
+  }
+
+  .content-wrapper input, select, button, textarea {
+    padding: 10px;
+    background-color: black;
+    border: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+  }
+
+  .content-wrapper button {
+
+  }
+  .contain button:hover {
+    background-color: #191919;
+    color: white;
+    cursor: pointer;
   }
 
   .info {
