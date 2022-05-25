@@ -8,11 +8,14 @@
 
     let alertContent;
     let alertDisplay;
+
     function showAlert(content) {
         alertContent = content;
         alertDisplay = "flex";
 
-        setTimeout(() => {  alertDisplay = "none"; }, 3000);
+        setTimeout(() => {
+            alertDisplay = "none";
+        }, 3000);
     }
 
     const slug = $page.params.slug;
@@ -22,10 +25,32 @@
     let fetched = false;
 
     onMount(async () => {
+        auth();
+    });
+
+
+    async function fetchData() {
         const response = await axios.get(url);
         article = response.data[0]
+        if(article.author !== me.name) {
+            window.location.href = "/maturita";
+        }
         fetched = true;
-    });
+    }
+    let me = [];
+    function auth() {
+        const config = {
+            headers: {Authorization: `Bearer ${$token}`}
+        };
+
+        axios.get(
+            'https://api-materialy.matyashimmer.eu/users/me',
+            config
+        ).then((data) => {
+            me = data.data;
+            fetchData();
+        });
+    }
 
     async function updateArticle() {
         //bearer
@@ -40,9 +65,9 @@
 
         console.log(response)
 
-        if(response.status === 200) {
+        if (response.status === 200) {
             showAlert("Article updated");
-        } else if(response.status === 204) {
+        } else if (response.status === 204) {
             showAlert("You are not authorized to edit this article");
             setTimeout(() => window.location.href = "/maturita/", 3000);
         } else {
@@ -55,22 +80,24 @@
 <Alert content={alertContent} display={alertDisplay}/>
 <Navbar/>
 <main>
-    <div class="content-wrapper">
-        <section class="info">
-            <input bind:value={article.title} placeholder="Nadpis">
-            <input bind:value={article.originalAuthor} placeholder="Autor díla">
+    {#if fetched}
+        <div class="content-wrapper">
+            <section class="info">
+                <input bind:value={article.title} placeholder="Nadpis">
+                <input bind:value={article.originalAuthor} placeholder="Autor díla">
+            </section>
+            <hr>
+            <textarea bind:value={article.content} placeholder="Text článku"></textarea>
+            <hr>
+            <section class="info">
+                <input readonly bind:value={article.author}>
+                <input readonly value={article.publishedAt}>
+            </section>
+        </div>
+        <section class="contain">
+            <button on:click={updateArticle}>Odeslat</button>
         </section>
-        <hr>
-        <textarea bind:value={article.content} placeholder="Text článku"></textarea>
-        <hr>
-        <section class="info">
-            <input readonly bind:value={article.author}>
-            <input readonly value={article.publishedAt}>
-        </section>
-    </div>
-    <section class="contain">
-        <button on:click={updateArticle}>Odeslat</button>
-    </section>
+    {/if}
 </main>
 
 
@@ -139,6 +166,7 @@
     .content-wrapper button {
 
     }
+
     .contain button:hover {
         background-color: #191919;
         color: white;

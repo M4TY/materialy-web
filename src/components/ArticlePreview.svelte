@@ -16,11 +16,11 @@
 		<p>{originalAuthor}</p>
 	</section>
 	<section class="bottom">
-		<section style="display: flex; flex-direction: row; gap: 10px">
+		<section class="titles">
 			<p>{author}</p>
 			<p>{new Date(published).toLocaleDateString()}</p>
+			<button on:click={onClick}>Přečíst >>></button>
 		</section>
-		<button on:click={onClick}>Přečíst >>></button>
 	</section>
 </div>
 
@@ -76,7 +76,7 @@
 	}
 	.bottom {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 		flex-direction: row;
 		width: 100%;
@@ -86,7 +86,6 @@
 		height: 30%;
 	}
 	.bottom p {
-		margin: 10px;
 		color: rgb(185, 185, 185);
 		-webkit-touch-callout: none;
 		-webkit-user-select: none;
@@ -94,12 +93,12 @@
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
+		white-space: nowrap;
 	}
 	.bottom button {
-		margin-right: 10px;
 		background: none;
 		border: none;
-		font-size: 16px;
+		text-decoration: underline;
 		color: rgb(185, 185, 185);
 		cursor: pointer;
 		transition: 0.25s;
@@ -108,14 +107,36 @@
 	.bottom button:hover {
 		color: white;
 	}
+
+	.bottom .titles {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 95%;
+		flex-direction: row;
+		gap: 10px;
+	}
 	@media screen and (min-width: 320px) and (max-width: 800px) {
 		.card {
-			width: 200px;
-			height: 150px;
+			width: 300px;
+			height: 190px;
+			border-radius: 2vmax;
+		}
+		.bottom {
+			border-bottom-left-radius: 2vmax;
+			border-bottom-right-radius: 2vmax;
 		}
 		.top h2 {
 			font-size: 16px;
 			margin: 5px;
+		}
+
+		.bottom {
+			font-size: 14px;
+		}
+
+		.titles button {
+			font-size: 13px;
 		}
 	}
 </style>
