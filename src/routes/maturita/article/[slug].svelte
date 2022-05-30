@@ -67,6 +67,7 @@
     .content-wrapper pre {
         font-size: 1rem;
         white-space: pre-wrap;
+        overflow-wrap: break-word;
     }
 
     .content-wrapper h1 {
