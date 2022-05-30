@@ -26,6 +26,12 @@
             return;
         }
 
+        //check if email is valid
+        if (email.includes("@") === false) {
+            showAlert("Zadejte prosím platný email")
+            return;
+        }
+
         if(password.length < 8) {
             showAlert("Heslo by mělo obsahovat minimálně osm znaků")
             return;
