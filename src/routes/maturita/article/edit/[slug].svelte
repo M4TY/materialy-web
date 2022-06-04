@@ -32,7 +32,7 @@
     async function fetchData() {
         const response = await axios.get(url);
         article = response.data[0]
-        if(article.author !== me.name) {
+        if(article.author !== me.name && me.group !== "ADMIN") {
             window.location.href = "/maturita";
         }
         fetched = true;
@@ -60,19 +60,38 @@
         const response = await axios.patch(url, {
             title: article.title,
             content: article.content,
-            originalAuthor: article.originalAuthor
+            originalAuthor: article.originalAuthor,
+            visible: article.visible
         }, config);
 
         console.log(response)
 
         if (response.status === 200) {
             showAlert("Article updated");
+            setTimeout(() => window.location.href = "/maturita/", 3000);
         } else if (response.status === 204) {
             showAlert("You are not authorized to edit this article");
             setTimeout(() => window.location.href = "/maturita/", 3000);
         } else {
             showAlert("Something went wrong");
+            setTimeout(() => window.location.href = "/maturita/", 3000);
         }
+    }
+
+    function deleteArticle() {
+        console.log("delete");
+        const config = {
+            headers: {Authorization: `Bearer ${$token}`}
+        };
+        axios.delete(
+                "https://api-materialy.matyashimmer.eu/articles/specific/" + slug,
+                config
+        ).then((res) => {
+            return res.data
+        }).then((data) => {
+            showAlert(data);
+            setTimeout(() => window.location.href = "/maturita/", 3000);
+        })
     }
 
 
@@ -91,11 +110,16 @@
             <hr>
             <section class="info">
                 <input readonly bind:value={article.author}>
+                <section>
+                    <label for="visible">Veřejné</label>
+                    <input name="visible" type="checkbox" bind:checked={article.visible}>
+                </section>
                 <input readonly value={article.publishedAt}>
             </section>
         </div>
         <section class="contain">
-            <button on:click={updateArticle}>Odeslat</button>
+            <button style="background-color: #ff561b" on:click={deleteArticle}>Odstranit</button>
+            <button on:click={updateArticle}>Aktualizovat</button>
         </section>
     {/if}
 </main>
@@ -119,6 +143,7 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        gap: 10px;
     }
 
     .content-wrapper {

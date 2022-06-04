@@ -10,6 +10,7 @@
     async function getArticles() {
         const response = await axios.get(endpoint);
         data = response.data;
+        data = data.filter(article => article.visible);
         data.sort((a, b) => {
             return new Date(b.publishedAt) - new Date(a.publishedAt);
         });

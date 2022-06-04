@@ -8,7 +8,7 @@
     import CodeEditor from "./Dashboard/CodeEditor.svelte";
     import ArticleCreation from "./Dashboard/ArticleCreation.svelte";
     import ArticleEditation from "./Dashboard/ArticleEditation.svelte";
-
+    import ArticleManager from "./Dashboard/ArticleManager.svelte";
     let me = [];
     let loaded = false;
     let eventName, eventSubject, eventPriority, eventDue;
@@ -88,6 +88,7 @@
             <EventCreation/>
             <ArticleCreation/>
             <ArticleEditation/>
+            <ArticleManager/>
             <UserEditor/>
             <EventEditor/>
             <CodeEditor/>

@@ -39,19 +39,22 @@
     let title;
     let content;
     let originalAuthor;
+    let visible;
 
     async function createArticle() {
         const config = {
             headers: {Authorization: `Bearer ${$token}`}
         };
 
+        console.log("visible: " + visible);
         let response = await axios.post(
             'https://api-materialy.matyashimmer.eu/articles/new',
             {
                 title: title,
                 content: content,
                 originalAuthor: originalAuthor,
-                author: me.name
+                author: me.name,
+                visible: visible
             },
             config
         )
@@ -80,6 +83,10 @@
         <hr>
         <section class="info">
             <input readonly bind:value={me.name}>
+            <section>
+                <label for="visible">Veřejné</label>
+                <input name="visible" type="checkbox" bind:checked={visible}>
+            </section>
             <input readonly value={new Date().toLocaleString("cs-cz")}>
         </section>
     </div>
