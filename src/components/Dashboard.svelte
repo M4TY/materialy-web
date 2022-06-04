@@ -6,7 +6,9 @@
     import UserEditor from "./Dashboard/UserEditor.svelte";
     import EventEditor from "./Dashboard/EventEditor.svelte";
     import CodeEditor from "./Dashboard/CodeEditor.svelte";
-
+    import ArticleCreation from "./Dashboard/ArticleCreation.svelte";
+    import ArticleEditation from "./Dashboard/ArticleEditation.svelte";
+    import ArticleManager from "./Dashboard/ArticleManager.svelte";
     let me = [];
     let loaded = false;
     let eventName, eventSubject, eventPriority, eventDue;
@@ -75,11 +77,18 @@
     {#if loaded}
         {#if me.group === "EDITOR"}
             <EventCreation/>
+            <ArticleCreation/>
+            <ArticleEditation/>
         {:else if me.group === "EDITOR+"}
             <EventCreation/>
+            <ArticleCreation/>
+            <ArticleEditation/>
             <EventEditor/>
         {:else if me.group === "ADMIN"}
             <EventCreation/>
+            <ArticleCreation/>
+            <ArticleEditation/>
+            <ArticleManager/>
             <UserEditor/>
             <EventEditor/>
             <CodeEditor/>
