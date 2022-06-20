@@ -23,6 +23,5 @@
     "@bytemd/plugin-math-ssr": "^1.14.0",
     "axios": "^0.26.1",
     "bytemd": "^1.14.0",
-    "fortawesome": "^0.0.1-security"
   }
 }
