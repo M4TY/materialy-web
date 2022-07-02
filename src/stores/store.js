@@ -15,3 +15,6 @@ export const versionSeen = writable((browser && localStorage.getItem('versionSee
 versionSeen.subscribe((val) => {
 	if (browser) return (localStorage.versionSeen = val);
 });
+
+
+export let year = writable("2022-2023");

@@ -2,22 +2,27 @@
 	import { onMount } from 'svelte';
 	import Card from '../components/Card.svelte';
 	import Footer from '../components/Footer.svelte';
+	import {year} from "../stores/store.js";
 
 	let loaded = false;
 	let temp = [];
 	let notes = [];
 	let categories = [];
+	let raw = [];
 
 	function fetchData() {
 		fetch('https://api.github.com/repos/M4TY/zapisky/git/trees/main?recursive=1')
 			.then((response) => response.json())
 			.then((data) => {
 				temp = data.tree;
+				raw = temp;
 				filterData(temp);
 			});
 	}
 	onMount(fetchData);
 	function filterData(data) {
+		notes = [];
+		categories = [];
 		data.forEach((element) => {
 			if (element.path.endsWith('.md')) {
 				if(element.path.includes("README.md")) {
@@ -26,9 +31,11 @@
 				if(element.path.includes("todo.md")) {
 					return;
 				}
+
+				if(!element.path.includes($year)) return;
 				let splitted = element.path.split('/');
-				let tempSubj = splitted[0];
-				let tempName = splitted[1].split('.')[0];
+				let tempSubj = splitted[1];
+				let tempName = splitted[2].split('.')[0];
 				let tempLink = 'https://raw.githubusercontent.com/M4TY/zapisky/main/' + element.path;
 				let obj = {
 					subject: tempSubj,
@@ -52,22 +59,17 @@
 			categories[index].subjectNotes.push(singleNote);
 		});
 		loaded = true;
-
-		fetchAd();
-	}
-
-	export let image_url;
-
-	function fetchAd() {
-		fetch('https://cdn.matyashimmer.eu/')
-			.then((res) => res.text())
-			.then((text) => (image_url = text));
+		console.log(categories)
 	}
 </script>
 
 <div class="content">
 	<div class="main">
-		<!-- <div class="ad" style="background-image: url({image_url});" /> -->
+		<select bind:value={$year}>
+			<option on:click={() => filterData(raw)} >2022-2023</option>
+			<option on:click={() => filterData(raw)} >2021-2022</option>
+		</select>
+		<p>{year}</p>
 		<div class="categories-wrapper">
 			{#each categories as category}
 				<h2>{category.subject}</h2>
@@ -79,7 +81,6 @@
 				</div>
 			{/each}
 		</div>
-		<!-- <div class="ad" style="background-image: url({image_url});" /> -->
 	</div>
 	{#if loaded}
 		<Footer />
@@ -100,6 +101,24 @@
 	}
 	.main {
 		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		min-width: 100%;
+	}
+
+	select {
+		width: 10%;
+		padding: 5px;
+		background-color: black;
+		border: none;
+		color: white;
+		border: 2px solid white;
+		border-radius: 5px;
+		text-align: center;
+		font-size: 20px;
+		font-family: 'Montserrat', sans-serif;
+		margin-top: 10px;
 	}
 
 	.ad {
@@ -149,5 +168,13 @@
 		justify-content: center;
 		align-items: center;
 		gap: 20px;
+	}
+
+	@media screen and (min-width: 320px) and (max-width: 800px) {
+		select {
+			width: 50%;
+			font-size: 16px;
+
+		}
 	}
 </style>

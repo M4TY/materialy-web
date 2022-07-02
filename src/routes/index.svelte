@@ -13,6 +13,6 @@
 {#if $cookies === 'false'}
 	<CookiePopup />
 {/if}
-{#if $versionSeen !== version}
-	<NewVersion />
-{/if}
+<!--{#if $versionSeen !== version}-->
+<!--	<NewVersion />-->
+<!--{/if}-->
