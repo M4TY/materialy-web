@@ -65,9 +65,9 @@
 
 <div class="content">
 	<div class="main">
-		<select bind:value={$year}>
-			<option on:click={() => filterData(raw)} >2022-2023</option>
-			<option on:click={() => filterData(raw)} >2021-2022</option>
+		<select bind:value={$year} on:change={() => filterData(raw)}>
+			<option>2022-2023</option>
+			<option>2021-2022</option>
 		</select>
 		<p>{year}</p>
 		<div class="categories-wrapper">
