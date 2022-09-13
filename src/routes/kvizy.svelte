@@ -5,6 +5,7 @@
     import AddQuiz from '../components/AddQuiz.svelte';
     import {token} from "../stores/store.js";
     import axios from "axios";
+    import {year} from "../stores/store.js";
 
     let temp = [];
     let quizzes = [];
@@ -44,7 +45,7 @@
 
     function filterData(data) {
         data.forEach((element) => {
-            if (element.path.endsWith('.json') && element.path.includes('Kvízy')) {
+            if (element.path.endsWith('.json') && element.path.includes($year + '/Kvízy')) {
                 let obj = element.path;
                 links = [...quizzes, obj];
                 populateQuizzes(links);
@@ -192,7 +193,7 @@
     </div>
 
     <div class="questionMenuWrapper">
-        <p class="current" bind:this={currentLabel}/>
+        <p class="current" bind:this={currentLabel}></p>
         <div class="text">
             <p class="question" bind:this={questionLabel}>Vyber si téma</p>
             <p class="answer{answerShown}" bind:this={answerLabel}>
