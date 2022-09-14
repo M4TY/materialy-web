@@ -19,6 +19,9 @@
     onMount(getArticles)
 
 </script>
+<svelte:head>
+    <title>Materiály | Maturita</title>
+</svelte:head>
 <Navbar maturitaActive="active"/>
 <div class="container">
     {#each data as item}

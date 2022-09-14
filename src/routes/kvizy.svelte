@@ -133,7 +133,7 @@
     }
 
     function next() {
-        if (currentQuestion == quizzes[currentQuiz].length - 1) return;
+        if (currentQuestion === quizzes[currentQuiz].length - 1) return;
         currentQuestion += 1;
         questionLabel.innerHTML = quizzes[currentQuiz][currentQuestion].question;
         answerLabel.innerHTML = quizzes[currentQuiz][currentQuestion].answer;
@@ -141,7 +141,7 @@
     }
 
     function previous() {
-        if (currentQuestion == 1) return;
+        if (currentQuestion === 1) return;
         currentQuestion -= 1;
         questionLabel.innerHTML = quizzes[currentQuiz][currentQuestion].question;
         answerLabel.innerHTML = quizzes[currentQuiz][currentQuestion].answer;
@@ -154,10 +154,10 @@
         if(length > 0){
             length --;
         }
-        else if(length == 0){
+        else if(length === 0){
             randomQuestions();
         }
-        if(currentQuestion == 0){
+        if(currentQuestion === 0){
             currentQuestion = arrayCopy.length;
         }
         questionLabel.innerHTML = quizzes[currentQuiz][currentQuestion].question;
@@ -174,6 +174,10 @@
 </script>
 
 <svelte:window on:keydown={handleClick}/>
+
+<svelte:head>
+    <title>Materiály | Quizzes</title>
+</svelte:head>
 
 <Navbar quizzesActive="active"/>
 

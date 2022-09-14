@@ -43,6 +43,9 @@
     onMount(fetchData)
 
 </script>
+<svelte:head>
+    <title>Materiály | Events</title>
+</svelte:head>
 <Navbar eventsActive="active"/>
 <div class="wrapper">
 <div class="cards">

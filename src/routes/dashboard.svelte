@@ -54,6 +54,9 @@
     }
 </script>
 
+<svelte:head>
+    <title>Materiály | Dashboard</title>
+</svelte:head>
 <Navbar profileActive="active"/>
 {#if show}
     {#if !loggedIn}

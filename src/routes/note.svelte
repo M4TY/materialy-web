@@ -28,6 +28,9 @@
     let value;
     let plugins = [gfm(), frontmatter(), pluginmathssr()]
 </script>
+<svelte:head>
+    <title>Materiály | Note</title>
+</svelte:head>
 <Navbar/>
 <div class="container">
     <div className="markdown-body">
