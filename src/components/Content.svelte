@@ -20,36 +20,32 @@
 			});
 	}
 	onMount(fetchData);
-	async function filterData(data) {
+	function filterData(data) {
 		notes = [];
 		categories = [];
-		for (const element of data) {
+		data.forEach((element) => {
 			if (element.path.endsWith('.md')) {
 				if(element.path.includes("README.md")) {
-					continue;
+					return;
 				}
 				if(element.path.includes("todo.md")) {
-					continue;
+					return;
 				}
 
-				if(!element.path.includes($year)) continue;
+				if(!element.path.includes($year)) return;
 				let splitted = element.path.split('/');
 				let tempSubj = splitted[1];
 				let tempName = splitted[2].split('.')[0];
 				let tempLink = 'https://raw.githubusercontent.com/M4TY/zapisky/main/' + element.path;
-                let commits = await fetch(`https://api.github.com/repos/M4TY/zapisky/commits?path=` + element.path);
-                commits = JSON.parse(await commits.text());
-                let date = commits[commits.length - 1].commit.committer.date;
 				let obj = {
 					subject: tempSubj,
 					name: tempName,
-					link: tempLink,
-                    date: date
+					link: tempLink
 				};
 				notes = [...notes, obj];
 			}
-		}
-        notes.forEach((singleNote) => {
+		});
+		notes.forEach((singleNote) => {
 			if (categories.some((e) => e.subject === singleNote.subject)) return;
 			let obj = {
 				subject: singleNote.subject,
@@ -61,7 +57,6 @@
 		notes.forEach((singleNote) => {
 			let index = categories.map((e) => e.subject).indexOf(singleNote.subject);
 			categories[index].subjectNotes.push(singleNote);
-            categories[index].subjectNotes.sort((a, b) => new Date(b.date) - new Date(a.date));
 		});
 		loaded = true;
 		console.log(categories)
