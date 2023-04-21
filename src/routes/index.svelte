@@ -8,6 +8,9 @@
 	import NewVersion from "../components/NewVersion.svelte";
 </script>
 
+<svelte:head>
+    <title>Materiály | Home</title>
+</svelte:head>
 <Navbar notesActive="active" />
 <Content />
 {#if $cookies === 'false'}

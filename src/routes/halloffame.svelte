@@ -28,6 +28,9 @@
 	}
 </script>
 
+<svelte:head>
+    <title>Materiály | Hall of Fame</title>
+</svelte:head>
 <Navbar />
 
 <div class="wrapper">

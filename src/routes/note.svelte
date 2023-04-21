@@ -18,16 +18,20 @@
             .then((data) => (value = data));
     }
 
-    import 'bytemd/dist/index.css'
-    import {Editor, Viewer} from 'bytemd'
+    // import 'bytemd/dist/index.css'
+    import {Viewer} from 'bytemd'
     import gfm from '@bytemd/plugin-gfm'
     import pluginmathssr from '@bytemd/plugin-math-ssr'
     import frontmatter from '@bytemd/plugin-frontmatter'
+    import highlight from '@bytemd/plugin-highlight'
     import 'bytemd/dist/index.css'
 
     let value;
-    let plugins = [gfm(), frontmatter(), pluginmathssr()]
+    let plugins = [gfm(), frontmatter(), pluginmathssr(), highlight()]
 </script>
+<svelte:head>
+    <title>Materiály | Note</title>
+</svelte:head>
 <Navbar/>
 <div class="container">
     <div className="markdown-body">
